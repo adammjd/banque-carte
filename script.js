@@ -57,6 +57,44 @@ const cardsData = {
 // Variable pour stocker l'angle de rotation actuel (pour animation fluide)
 let carouselRotation = 0;
 
+// Mapping des cartes vers les classes de fond
+const backgroundClasses = {
+    standard: ['bg-credit-agricol', 'bg-revolut', 'bg-societe-generale', 'bg-boursorama', 'bg-la-poste'],
+    metal: ['bg-platinum', 'bg-gold', 'bg-black']
+};
+
+// Fonction pour changer le fond
+function updateBackground() {
+    // Retirer toutes les classes de fond
+    document.body.classList.remove(
+        'bg-platinum', 'bg-gold', 'bg-black',
+        'bg-credit-agricol', 'bg-revolut', 'bg-societe-generale', 'bg-boursorama', 'bg-la-poste'
+    );
+    
+    // Cacher les overlays
+    const eyesOverlay = document.getElementById('eyes-overlay');
+    const vibrationOverlay = document.getElementById('vibration-overlay');
+    eyesOverlay.classList.remove('show');
+    vibrationOverlay.classList.remove('show');
+    
+    // Ajouter la classe de fond correspondante
+    const bgClass = backgroundClasses[currentCategory][currentIndex];
+    if (bgClass) {
+        document.body.classList.add(bgClass);
+        
+        // Effets spéciaux pour Metal Cards
+        if (currentCategory === 'metal') {
+            if (bgClass === 'bg-gold') {
+                // Afficher les yeux pour Gold
+                eyesOverlay.classList.add('show');
+            } else if (bgClass === 'bg-platinum') {
+                // Afficher les vibrations pour Platinum
+                vibrationOverlay.classList.add('show');
+            }
+        }
+    }
+}
+
 function updateCarousel() {
     // Carrousel circulaire 3D pour les deux catégories
     const totalCards = bankCards.length;
@@ -104,6 +142,9 @@ function updateCarousel() {
         card.style.visibility = 'visible';
         card.style.pointerEvents = z > -300 ? 'auto' : 'none';
     });
+    
+    // Mettre à jour le fond
+    updateBackground();
 }
 
 // Navigation

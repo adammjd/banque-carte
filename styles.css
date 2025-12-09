@@ -13,6 +13,194 @@ body {
     justify-content: center;
     align-items: center;
     color: #1a1a1a;
+    transition: background 0.8s ease, background-color 0.8s ease;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Fonds dynamiques pour Metal Cards */
+body.bg-platinum {
+    background: linear-gradient(135deg, #E5E7EB 0%, #9CA3AF 50%, #D1D5DB 100%);
+}
+
+body.bg-gold {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FCD34D 50%, #F59E0B 100%);
+}
+
+body.bg-black {
+    background: linear-gradient(135deg, #1F2937 0%, #111827 50%, #030712 100%);
+    color: white;
+}
+
+/* Fonds dynamiques pour Cartes Standard */
+body.bg-credit-agricol {
+    background: linear-gradient(135deg, #D1FAE5 0%, #6EE7B7 50%, #10B981 100%);
+}
+
+body.bg-revolut {
+    background: linear-gradient(135deg, #DBEAFE 0%, #93C5FD 50%, #3B82F6 100%);
+}
+
+body.bg-societe-generale {
+    background: linear-gradient(135deg, #1E293B 0%, #334155 50%, #475569 100%);
+    color: white;
+}
+
+body.bg-boursorama {
+    background: linear-gradient(135deg, #FFEDD5 0%, #FDBA74 50%, #F97316 100%);
+}
+
+body.bg-la-poste {
+    background: linear-gradient(135deg, #F3E8FF 0%, #D8B4FE 50%, #A855F7 100%);
+}
+
+/* Overlay pour les yeux (Gold Card) */
+.eyes-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.eyes-overlay.show {
+    opacity: 1;
+}
+
+.eye {
+    position: absolute;
+    width: 120px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+    animation: blink 3s infinite;
+}
+
+.eye::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: lookAround 4s infinite;
+}
+
+.eye.left {
+    top: 30%;
+    left: 20%;
+}
+
+.eye.right {
+    top: 30%;
+    right: 20%;
+}
+
+@keyframes blink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+}
+
+@keyframes lookAround {
+    0%, 100% { transform: translate(-50%, -50%); }
+    25% { transform: translate(-20%, -50%); }
+    50% { transform: translate(-50%, -30%); }
+    75% { transform: translate(-80%, -50%); }
+}
+
+/* Vibration overlay (Platinum Card) */
+.vibration-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.vibration-overlay.show {
+    opacity: 1;
+}
+
+.sound-wave {
+    position: absolute;
+    border: 3px solid rgba(192, 192, 192, 0.6);
+    border-radius: 50%;
+    animation: soundPulse 2s infinite;
+}
+
+.sound-wave:nth-child(1) {
+    width: 100px;
+    height: 100px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.sound-wave:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 0.5s;
+}
+
+.sound-wave:nth-child(3) {
+    width: 80px;
+    height: 80px;
+    bottom: 20%;
+    left: 30%;
+    animation-delay: 1s;
+}
+
+.sound-wave:nth-child(4) {
+    width: 120px;
+    height: 120px;
+    top: 40%;
+    right: 30%;
+    animation-delay: 1.5s;
+}
+
+@keyframes soundPulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Effet métallique pour Black Card */
+body.bg-black::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%),
+        linear-gradient(0deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+    pointer-events: none;
+    animation: metallicShine 3s infinite;
+}
+
+@keyframes metallicShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
 .container {

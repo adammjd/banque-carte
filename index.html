@@ -239,32 +239,53 @@
             <h1>Nos Cartes Bancaires</h1>
             <div class="carousel-container">
                 <div class="carousel-track" id="standard-track">
-                    <!-- Carte 1 - Crédit Agricol -->
-                    <div class="bank-card card-credit-agricol" data-index="0">
+                    <!-- Carte 1 - PVC-FREE Card -->
+                    <div class="bank-card card-pvc-free" data-index="0">
                         <div class="card-flipper">
                             <div class="card-front">
-                                <div class="card-content">
-                                    <div class="card-logo">🌾</div>
-                                    <div class="card-chip"></div>
-                                    <div class="card-number">5234 8573 9218 4756</div>
-                                    <div class="card-footer">
-                                        <div class="card-holder">
-                                            <span class="label">TITULAIRE</span>
-                                            <span class="name">JOHN SMITH</span>
-                                        </div>
-                                        <div class="card-expiry">
-                                            <span class="label">EXPIRE</span>
-                                            <span class="date">12/28</span>
-                                        </div>
+                                <div class="card-content pvc-card-design">
+                                    <!-- Header -->
+                                    <div class="pvc-header">
+                                        <span class="pvc-title">PVC-FREE</span>
+                                        <span class="pvc-subtitle">0% PVC & 0% Chlorine</span>
                                     </div>
+                                    <!-- Statistique -->
+                                    <div class="pvc-stat">
+                                        <span class="pvc-percent">100%</span>
+                                        <span class="pvc-label">recycled PETg sourced<br>from industrial waste</span>
+                                    </div>
+                                    <!-- Puce -->
+                                    <div class="card-chip pvc-chip"></div>
+                                    <!-- Symbole recyclage avec icônes -->
+                                    <div class="pvc-recycle">
+                                        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Triangle de recyclage -->
+                                            <path d="M100 30 L160 130 L40 130 Z" stroke="rgba(255,255,255,0.6)" stroke-width="25" fill="none" stroke-linejoin="round"/>
+                                            <!-- Flèches -->
+                                            <path d="M100 15 L115 45 L85 45 Z" fill="rgba(255,255,255,0.7)"/>
+                                            <path d="M170 125 L155 95 L175 105 Z" fill="rgba(255,255,255,0.7)" transform="rotate(120 160 130)"/>
+                                            <path d="M30 125 L45 95 L25 105 Z" fill="rgba(255,255,255,0.7)" transform="rotate(-120 40 130)"/>
+                                            <!-- Icônes à l'intérieur -->
+                                            <text x="100" y="95" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="24">🏭</text>
+                                            <text x="70" y="120" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="18">🚶</text>
+                                            <text x="130" y="120" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="18">🏢</text>
+                                        </svg>
+                                    </div>
+                                    <!-- Sans contact -->
+                                    <div class="pvc-contactless">
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M4.5 8.5c2-2 4.5-3 7.5-3m-9.5 6c3-3 6.5-4.5 10.5-4.5m-12.5 7c4-4 8.5-6 14.5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <!-- THALES -->
+                                    <div class="pvc-brand">THALES</div>
                                 </div>
-                                <div class="card-brand">VISA</div>
                             </div>
                             <div class="card-back">
                                 <div class="back-content">
-                                    <div class="back-logo">🌾</div>
-                                    <h3 class="back-title">Crédit Agricol</h3>
-                                    <p class="back-text">Crédit Agricol est l'un des plus grands groupes bancaires français, fondé en 1894. Il propose des services bancaires complets pour les particuliers et les entreprises, avec une forte présence territoriale en France.</p>
+                                    <div class="back-logo">♻️</div>
+                                    <h3 class="back-title">PVC-FREE Card</h3>
+                                    <p class="back-text">Cette carte est fabriquée à partir de 100% de PETg recyclé provenant de déchets industriels. Sans PVC ni chlore, elle représente une solution écologique pour les paiements.</p>
                                 </div>
                             </div>
                         </div>

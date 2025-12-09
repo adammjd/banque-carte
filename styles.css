@@ -361,13 +361,16 @@ h1 {
 
 /* ========== OCEAN CARD - Carte écologique plastique océan ========== */
 .bank-card.card-ocean {
-    background: linear-gradient(180deg, #E8F4FC 0%, #B8D4E8 30%, #7EB8DA 100%);
+    background: transparent;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    position: relative;
 }
 
-.bank-card.card-ocean::before {
+.bank-card.card-ocean .card-front {
+    background: linear-gradient(180deg, #E8F4FC 0%, #B8D4E8 30%, #7EB8DA 100%);
+    overflow: hidden;
+}
+
+.bank-card.card-ocean .card-front::before {
     content: '';
     position: absolute;
     top: 0;
@@ -383,6 +386,10 @@ h1 {
     background-size: 100% 100%;
     pointer-events: none;
     border-radius: 15px;
+}
+
+.bank-card.card-ocean .card-back {
+    background: linear-gradient(180deg, #7EB8DA 0%, #B8D4E8 50%, #E8F4FC 100%);
 }
 
 .ocean-card-design {

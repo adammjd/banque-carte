@@ -59,16 +59,30 @@ function updateCarousel() {
         // Carrousel circulaire pour Metal Cards
         const totalCards = bankCards.length;
         const angleSlice = 360 / totalCards;
-        const radius = 350; // Distance du centre
+        const radius = 280; // Distance du centre
 
         bankCards.forEach((card, index) => {
-            const angle = (angleSlice * (index - currentIndex)) * (Math.PI / 180);
-            const x = Math.sin(angle) * radius;
-            const z = Math.cos(angle) * radius;
+            // Calculer l'angle pour cette carte
+            const cardAngle = angleSlice * (index - currentIndex);
+            const angleRad = (cardAngle * Math.PI) / 180;
             
-            card.style.transform = `translate3d(${x}px, 0, ${z}px) rotateY(${angleSlice * (index - currentIndex)}deg)`;
-            card.style.opacity = Math.cos(angle) > 0 ? '1' : '0.3';
-            card.style.zIndex = Math.cos(angle) > 0 ? '10' : '1';
+            // Positions 3D
+            const x = Math.sin(angleRad) * radius;
+            const z = Math.cos(angleRad) * radius;
+            
+            // Rotation Y basée sur la position dans le cercle
+            const rotationY = cardAngle;
+            
+            // Transform 3D
+            card.style.transform = `translateZ(${z}px) translateX(${x}px) rotateY(${rotationY}deg)`;
+            
+            // Z-index pour l'ordre de rendu
+            const zIndex = Math.round(z);
+            card.style.zIndex = zIndex;
+            
+            // Opacité basée sur la proximité
+            const opacity = 0.3 + (Math.cos(angleRad) * 0.7);
+            card.style.opacity = Math.max(0.2, opacity);
         });
     } else {
         // Carrousel vertical normal pour Standard

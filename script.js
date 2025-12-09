@@ -54,42 +54,53 @@ const cardsData = {
 };
 
 // Fonction pour mettre à jour les classes des cartes
+// Variable pour stocker l'angle de rotation actuel (pour animation fluide)
+let metalRotation = 0;
+
 function updateCarousel() {
     if (currentCategory === 'metal') {
         // Carrousel circulaire 3D pour Metal Cards - comme sur les photos
         const totalCards = bankCards.length;
         const angleSlice = 360 / totalCards;
-        const radius = 300; // Distance du centre
+        const radius = 500; // Rayon du cercle
+        
+        // Calculer l'angle de rotation basé sur l'index courant
+        metalRotation = currentIndex * angleSlice;
 
         bankCards.forEach((card, index) => {
-            // Calculer l'angle pour cette carte
-            const cardAngle = angleSlice * (index - currentIndex);
+            // Angle de cette carte dans le cercle
+            const cardAngle = (index * angleSlice) - metalRotation;
             const angleRad = (cardAngle * Math.PI) / 180;
             
-            // Positions 3D circulaires
+            // Position sur le cercle horizontal (X et Z)
             const x = Math.sin(angleRad) * radius;
-            const z = Math.cos(angleRad) * radius;
+            const z = Math.cos(angleRad) * radius - radius; // Décalé pour que le centre soit devant
             
-            // Rotation Y pour que la carte regarde vers le centre
-            const rotationY = cardAngle;
+            // Rotation Y pour que la carte soit tangente au cercle
+            const rotationY = -cardAngle;
             
-            // Transform 3D complet avec perspective
-            card.style.transform = `translateZ(${z}px) translateX(${x}px) rotateY(${rotationY}deg)`;
+            // Légère inclinaison pour effet 3D flottant
+            const rotationX = 5;
+            const rotationZ = cardAngle * 0.1;
             
-            // Z-index basé sur la profondeur (z)
-            card.style.zIndex = Math.floor(z + 300);
+            // Transform 3D complet
+            card.style.transform = `
+                translateX(${x}px) 
+                translateZ(${z}px) 
+                rotateY(${rotationY}deg)
+                rotateX(${rotationX}deg)
+                rotateZ(${rotationZ}deg)
+            `;
             
-            // Opacité progressive - seulement les cartes devant sont visibles
-            if (z > -150) {
-                const opacity = 0.4 + (z / 300) * 0.6;
-                card.style.opacity = opacity;
-                card.style.visibility = 'visible';
-                card.style.pointerEvents = 'auto';
-            } else {
-                card.style.opacity = 0;
-                card.style.visibility = 'hidden';
-                card.style.pointerEvents = 'none';
-            }
+            // Z-index basé sur la profondeur
+            card.style.zIndex = Math.floor(z + 600);
+            
+            // Toutes les cartes sont visibles mais avec opacité variable
+            const normalizedZ = (z + radius) / (2 * radius); // 0 à 1
+            const opacity = 0.3 + normalizedZ * 0.7;
+            card.style.opacity = opacity;
+            card.style.visibility = 'visible';
+            card.style.pointerEvents = z > -300 ? 'auto' : 'none';
         });
     } else {
         // Carrousel vertical normal pour Standard

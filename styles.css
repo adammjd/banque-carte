@@ -70,30 +70,84 @@ body.bg-la-poste {
     opacity: 1;
 }
 
+/* Container pour chaque empreinte avec scanner */
 .fingerprint {
     position: absolute;
-    width: 90px;
-    height: 110px;
+    width: 120px;
+    height: 160px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    animation: fingerprintPulse 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.5));
+    filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.6));
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 .fingerprint svg {
     width: 100%;
-    height: 100%;
+    height: 120px;
 }
 
-@keyframes fingerprintPulse {
-    0%, 100% { 
-        opacity: 0.6;
-        transform: scale(1);
+/* Ligne de scan pour chaque empreinte */
+.fingerprint-scan-line {
+    position: absolute;
+    left: 5%;
+    width: 90%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(0, 229, 255, 0.4) 20%,
+        rgba(0, 229, 255, 1) 50%,
+        rgba(0, 229, 255, 0.4) 80%,
+        transparent 100%);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.9),
+                0 0 30px rgba(0, 229, 255, 0.6),
+                0 0 45px rgba(0, 229, 255, 0.3);
+    opacity: 0;
+    top: 0;
+    transition: opacity 0.2s ease;
+    border-radius: 2px;
+}
+
+/* Animation de scan au survol de l'empreinte */
+.fingerprint:hover .fingerprint-scan-line {
+    opacity: 1;
+    animation: overlayScanAnimation 1.5s ease-in-out infinite;
+}
+
+.fingerprint:hover svg {
+    filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.9));
+}
+
+/* Reflet sous l'empreinte */
+.fingerprint-reflect {
+    width: 100%;
+    height: 40px;
+    opacity: 0.25;
+    transform: scaleY(-0.5);
+    filter: blur(2px);
+    margin-top: -15px;
+}
+
+@keyframes overlayScanAnimation {
+    0% {
+        top: 5%;
+        opacity: 0;
     }
-    50% { 
+    15% {
         opacity: 1;
-        transform: scale(1.05);
+    }
+    50% {
+        top: 65%;
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        top: 5%;
+        opacity: 0;
     }
 }
 
@@ -867,13 +921,12 @@ h1 {
     display: none;
 }
 
-/* ========== BIOMETRIC CARD - Fond sombre avec empreinte cyan ========== */
+/* ========== BIOMETRIC CARD (Gold) - Noir avec capteur doré ========== */
 .bank-card.card-metal-gold {
-    background: linear-gradient(180deg, #0A1628 0%, #0D1E36 30%, #0F2444 60%, #0A1628 100%);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6),
-                inset 0 1px 2px rgba(103, 232, 249, 0.1);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
     padding: 0;
-    overflow: hidden;
 }
 
 .biometric-card-design {
@@ -881,148 +934,59 @@ h1 {
     width: 100%;
     height: 100%;
     padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .card-brand-logo.dark {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    color: rgba(103, 232, 249, 0.7);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 2px;
+    color: #9CA3AF;
 }
 
-/* Container de l'empreinte avec scanner */
-.fingerprint-scanner-container {
-    position: relative;
-    width: 160px;
-    height: 220px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Empreinte principale */
-.main-fingerprint {
-    width: 140px;
-    height: 160px;
-    filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.5));
-    transition: filter 0.3s ease;
-}
-
-.bank-card.card-metal-gold:hover .main-fingerprint {
-    filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.8));
-}
-
-/* Ligne de scan cyan */
-.scan-line {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(6, 182, 212, 0.3) 20%,
-        rgba(103, 232, 249, 1) 50%,
-        rgba(6, 182, 212, 0.3) 80%,
-        transparent 100%);
-    box-shadow: 0 0 20px rgba(103, 232, 249, 0.8),
-                0 0 40px rgba(6, 182, 212, 0.5),
-                0 0 60px rgba(6, 182, 212, 0.3);
-    opacity: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: opacity 0.3s ease;
-}
-
-/* Animation de scan au survol */
-.bank-card.card-metal-gold:hover .scan-line {
-    opacity: 1;
-    animation: scanAnimation 2s ease-in-out infinite;
-}
-
-@keyframes scanAnimation {
-    0% {
-        top: 10%;
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    50% {
-        top: 70%;
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        top: 10%;
-        opacity: 0;
-    }
-}
-
-/* Reflet de l'empreinte */
-.fingerprint-reflection {
-    width: 140px;
-    height: 60px;
-    margin-top: -10px;
-    opacity: 0.3;
-    transform: scaleY(-0.4);
-    filter: blur(2px);
-}
-
-/* Puce de la carte */
-.biometric-main-chip {
+.biometric-chip {
     position: absolute;
     left: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 32px;
-    background: linear-gradient(145deg, #E8E0D5 0%, #C9BFA8 50%, #B8A888 100%);
-    border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4),
-                inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    top: 100px;
+    width: 55px;
+    height: 55px;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
 }
 
-.biometric-main-chip::before {
-    content: '';
+.fingerprint-sensor {
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    background: repeating-radial-gradient(
+        circle at center,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.2) 2px,
+        rgba(0, 0, 0, 0.2) 4px
+    );
+}
+
+.biometric-main-chip {
     position: absolute;
-    top: 6px;
-    left: 6px;
-    right: 6px;
-    bottom: 6px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 2px;
+    right: 25px;
+    top: 80px;
+    width: 45px;
+    height: 35px;
+    background: linear-gradient(135deg, #374151 0%, #4B5563 100%);
+    border-radius: 6px;
+}
+
+.security-icon {
+    position: absolute;
+    right: 25px;
+    bottom: 80px;
+    font-size: 24px;
 }
 
 .card-metal-gold .card-type-label {
-    display: none;
-}
-
-/* Effet de lueur sur les bords au survol */
-.bank-card.card-metal-gold::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    pointer-events: none;
-    z-index: 10;
-}
-
-.bank-card.card-metal-gold:hover::before {
-    border-color: rgba(103, 232, 249, 0.3);
-    box-shadow: inset 0 0 30px rgba(6, 182, 212, 0.1);
+    color: #F59E0B;
 }
 
 /* ========== EASY METAL CARD - Rouge métallique ========== */

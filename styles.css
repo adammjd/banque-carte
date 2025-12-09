@@ -394,12 +394,13 @@ h1 {
                 inset 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-/* ========== VOICE CARD (Platinum) - Blanc avec ondes bleues ========== */
+/* ========== VOICE CARD (Platinum) - Design avec ondes qui coulent ========== */
 .bank-card.card-metal-platinum {
-    background: linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%);
+    background: white;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15),
                 inset 0 2px 4px rgba(255, 255, 255, 0.8);
     padding: 0;
+    overflow: hidden;
 }
 
 .voice-card-design {
@@ -408,47 +409,116 @@ h1 {
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding: 20px;
 }
 
-.voice-waves {
+/* Zone bleue en haut */
+.voice-top-section {
     position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.voice-waves .wave {
-    height: 4px;
-    background: linear-gradient(90deg, #0EA5E9 0%, #06B6D4 100%);
-    border-radius: 4px;
-    animation: waveMove 1.5s ease-in-out infinite;
-}
-
-.voice-waves .wave:nth-child(1) { width: 60px; animation-delay: 0s; }
-.voice-waves .wave:nth-child(2) { width: 100px; animation-delay: 0.1s; }
-.voice-waves .wave:nth-child(3) { width: 140px; animation-delay: 0.2s; }
-.voice-waves .wave:nth-child(4) { width: 100px; animation-delay: 0.3s; }
-.voice-waves .wave:nth-child(5) { width: 60px; animation-delay: 0.4s; }
-
-@keyframes waveMove {
-    0%, 100% { transform: scaleX(1); opacity: 0.7; }
-    50% { transform: scaleX(1.2); opacity: 1; }
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 55%;
+    background: linear-gradient(180deg, #2D3A8C 0%, #3B4BA8 100%);
+    border-radius: 15px 15px 0 0;
 }
 
 .voice-chip {
     position: absolute;
-    left: 25px;
-    top: 80px;
-    width: 45px;
-    height: 35px;
-    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
-    border-radius: 6px;
+    left: 50%;
+    top: 35%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(145deg, #F5E6D3 0%, #D4B896 30%, #C9A87C 100%);
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,0.1),
+                0 2px 4px rgba(0,0,0,0.2);
+}
+
+.voice-chip::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px;
+    height: 25px;
+    border: 1px solid rgba(139, 115, 85, 0.4);
+    border-radius: 3px;
+}
+
+/* Barres qui coulent comme l'image */
+.voice-waves-drip {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    right: 0;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3px;
+}
+
+.drip-bar {
+    width: 12px;
+    background: #00D4FF;
+    border-radius: 0 0 6px 6px;
+    position: relative;
+}
+
+.drip-bar:nth-child(1) { height: 35px; }
+.drip-bar:nth-child(2) { height: 55px; }
+.drip-bar:nth-child(3) { height: 70px; }
+.drip-bar:nth-child(4) { height: 85px; }
+.drip-bar:nth-child(5) { height: 95px; }
+.drip-bar:nth-child(6) { height: 100px; }
+.drip-bar:nth-child(7) { height: 95px; }
+.drip-bar:nth-child(8) { height: 85px; }
+.drip-bar:nth-child(9) { height: 70px; }
+.drip-bar:nth-child(10) { height: 55px; }
+.drip-bar:nth-child(11) { height: 35px; }
+.drip-bar:nth-child(12) { height: 25px; }
+
+/* Zone blanche en bas */
+.voice-bottom-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 25%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 15px 20px;
+}
+
+.bluetooth-icon {
+    position: absolute;
+    right: 20px;
+    bottom: 50px;
+    width: 24px;
+    height: 24px;
+    color: #3B82F6;
+}
+
+.bluetooth-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.voice-card-design .card-brand-logo {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    left: auto;
+    top: auto;
+    font-size: 14px;
+    font-weight: 800;
+    color: #1E3A8A;
+    letter-spacing: 3px;
 }
 
 .card-brand-logo {
@@ -470,6 +540,11 @@ h1 {
     color: #334155;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+/* Style Voice Card label */
+.card-metal-platinum .card-type-label {
+    display: none;
 }
 
 /* ========== BIOMETRIC CARD (Gold) - Noir avec capteur doré ========== */

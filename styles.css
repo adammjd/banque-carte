@@ -366,12 +366,24 @@ h1 {
 }
 
 .bank-card.card-ocean .card-front {
-    background: linear-gradient(180deg, #D6E8F5 0%, #B5D3E8 40%, #8FBDD8 100%);
+    background: linear-gradient(180deg, 
+        #1E3D59 0%, 
+        #2B5278 20%, 
+        #4A7BA7 40%, 
+        #7EB3D3 60%, 
+        #B8D8E8 80%, 
+        #E8F4F8 100%);
     overflow: hidden;
 }
 
 .bank-card.card-ocean .card-back {
-    background: linear-gradient(180deg, #8FBDD8 0%, #B5D3E8 50%, #D6E8F5 100%);
+    background: linear-gradient(180deg, 
+        #E8F4F8 0%, 
+        #B8D8E8 20%, 
+        #7EB3D3 40%, 
+        #4A7BA7 60%, 
+        #2B5278 80%, 
+        #1E3D59 100%);
 }
 
 .ocean-card-design {
@@ -419,7 +431,7 @@ h1 {
 
 .ocean-small-text {
     font-size: 7px;
-    color: #C41E3A;
+    color: #FFB6C1;
     text-transform: lowercase;
     letter-spacing: 0.3px;
     font-weight: 500;
@@ -428,9 +440,10 @@ h1 {
 .ocean-title {
     font-size: 14px;
     font-weight: 800;
-    color: #1E3A5F;
+    color: #FFFFFF;
     letter-spacing: 0.5px;
     margin-top: -2px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
 .ocean-stat {
@@ -446,19 +459,20 @@ h1 {
 .ocean-percent {
     font-size: 22px;
     font-weight: 800;
-    color: #C41E3A;
+    color: #FF6B6B;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .ocean-label {
     font-size: 7px;
-    color: #1E3A5F;
+    color: #E8F4F8;
     line-height: 1.1;
     font-weight: 600;
 }
 
 .ocean-label small {
     font-size: 6px;
-    color: #3B6B8A;
+    color: #B8D8E8;
     font-weight: 400;
     font-style: italic;
 }
@@ -512,7 +526,7 @@ h1 {
     width: 22px;
     height: 22px;
     color: #1E3A5F;
-    opacity: 0.7;
+    opacity: 0.9;
     z-index: 3;
 }
 
@@ -528,9 +542,10 @@ h1 {
     transform: translateX(-50%);
     font-size: 16px;
     font-weight: 800;
-    color: #1E3A5F;
+    color: #1E3D59;
     letter-spacing: 4px;
     z-index: 3;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.5);
 }
 
 .bank-card.card-boursorama {

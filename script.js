@@ -55,23 +55,41 @@ const cardsData = {
 
 // Fonction pour mettre à jour les classes des cartes
 function updateCarousel() {
-    bankCards.forEach((card, index) => {
-        card.classList.remove('active', 'next', 'next2', 'exit-bottom', 'hidden-back');
-        
-        const position = (index - currentIndex + bankCards.length) % bankCards.length;
-        
-        if (position === 0) {
-            card.classList.add('active');
-        } else if (position === 1) {
-            card.classList.add('next');
-        } else if (position === 2) {
-            card.classList.add('next2');
-        } else if (position === 3) {
-            card.classList.add('hidden-back');
-        } else if (position === bankCards.length - 1) {
-            card.classList.add('exit-bottom');
-        }
-    });
+    if (currentCategory === 'metal') {
+        // Carrousel circulaire pour Metal Cards
+        const totalCards = bankCards.length;
+        const angleSlice = 360 / totalCards;
+        const radius = 350; // Distance du centre
+
+        bankCards.forEach((card, index) => {
+            const angle = (angleSlice * (index - currentIndex)) * (Math.PI / 180);
+            const x = Math.sin(angle) * radius;
+            const z = Math.cos(angle) * radius;
+            
+            card.style.transform = `translate3d(${x}px, 0, ${z}px) rotateY(${angleSlice * (index - currentIndex)}deg)`;
+            card.style.opacity = Math.cos(angle) > 0 ? '1' : '0.3';
+            card.style.zIndex = Math.cos(angle) > 0 ? '10' : '1';
+        });
+    } else {
+        // Carrousel vertical normal pour Standard
+        bankCards.forEach((card, index) => {
+            card.classList.remove('active', 'next', 'next2', 'exit-bottom', 'hidden-back');
+            
+            const position = (index - currentIndex + bankCards.length) % bankCards.length;
+            
+            if (position === 0) {
+                card.classList.add('active');
+            } else if (position === 1) {
+                card.classList.add('next');
+            } else if (position === 2) {
+                card.classList.add('next2');
+            } else if (position === 3) {
+                card.classList.add('hidden-back');
+            } else if (position === bankCards.length - 1) {
+                card.classList.add('exit-bottom');
+            }
+        });
+    }
 }
 
 // Navigation

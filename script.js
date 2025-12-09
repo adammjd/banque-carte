@@ -74,6 +74,7 @@ function createOceanWaves() {
             <div class="wave wave2"></div>
             <div class="wave wave3"></div>
             <div class="wave wave4"></div>
+            <div class="wave wave5"></div>
         `;
         document.body.appendChild(wavesContainer);
     }

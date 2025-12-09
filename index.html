@@ -3,169 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartes Bancaires</title>
+    <title>Mes Cartes Bancaires</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Nos Cartes Bancaires</h1>
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <!-- Carte 1 - Crédit Agricol -->
-                <div class="bank-card card-credit-agricol" data-index="0">
-                    <div class="card-flipper">
-                        <div class="card-front">
-                            <div class="card-content">
-                                <div class="card-logo">🌾</div>
-                                <div class="card-chip"></div>
-                                <div class="card-number">5234 8573 9218 4756</div>
-                                <div class="card-footer">
-                                    <div class="card-holder">
-                                        <span class="label">TITULAIRE</span>
-                                        <span class="name">JOHN SMITH</span>
-                                    </div>
-                                    <div class="card-expiry">
-                                        <span class="label">EXPIRE</span>
-                                        <span class="date">12/28</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-brand">VISA</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="back-content">
-                                <div class="back-logo">🌾</div>
-                                <h3 class="back-title">Crédit Agricol</h3>
-                                <p class="back-text">Crédit Agricol est l'un des plus grands groupes bancaires français, fondé en 1894. Il propose des services bancaires complets pour les particuliers et les entreprises, avec une forte présence territoriale en France.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carte 2 - Revolut -->
-                <div class="bank-card card-revolut" data-index="1">
-                    <div class="card-flipper">
-                        <div class="card-front">
-                            <div class="card-content">
-                                <div class="card-logo">⚡</div>
-                                <div class="card-chip"></div>
-                                <div class="card-number">4892 1765 3847 2934</div>
-                                <div class="card-footer">
-                                    <div class="card-holder">
-                                        <span class="label">TITULAIRE</span>
-                                        <span class="name">MARIE DUPONT</span>
-                                    </div>
-                                    <div class="card-expiry">
-                                        <span class="label">EXPIRE</span>
-                                        <span class="date">09/27</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-brand">MASTERCARD</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="back-content">
-                                <div class="back-logo">⚡</div>
-                                <h3 class="back-title">Revolut</h3>
-                                <p class="back-text">Revolut est une fintech basée à Londres proposant des services bancaires numériques révolutionnaires. Leader en matière de paiements internationaux et de transfert d'argent à faible coût.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carte 3 - Société Générale -->
-                <div class="bank-card card-societe-generale" data-index="2">
-                    <div class="card-flipper">
-                        <div class="card-front">
-                            <div class="card-content">
-                                <div class="card-logo">🏛️</div>
-                                <div class="card-chip"></div>
-                                <div class="card-number">6011 2847 5930 1847</div>
-                                <div class="card-footer">
-                                    <div class="card-holder">
-                                        <span class="label">TITULAIRE</span>
-                                        <span class="name">JEAN MARTIN</span>
-                                    </div>
-                                    <div class="card-expiry">
-                                        <span class="label">EXPIRE</span>
-                                        <span class="date">03/26</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-brand">VISA</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="back-content">
-                                <div class="back-logo">🏛️</div>
-                                <h3 class="back-title">Société Générale</h3>
-                                <p class="back-text">Société Générale, fondée en 1864, est l'une des plus grandes banques de France. Elle offre une gamme complète de produits et services bancaires et financiers.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carte 4 - Boursorama -->
-                <div class="bank-card card-boursorama" data-index="3">
-                    <div class="card-flipper">
-                        <div class="card-front">
-                            <div class="card-content">
-                                <div class="card-logo">💼</div>
-                                <div class="card-chip"></div>
-                                <div class="card-number">3782 847569 12345</div>
-                                <div class="card-footer">
-                                    <div class="card-holder">
-                                        <span class="label">TITULAIRE</span>
-                                        <span class="name">SOPHIE BERNARD</span>
-                                    </div>
-                                    <div class="card-expiry">
-                                        <span class="label">EXPIRE</span>
-                                        <span class="date">07/29</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-brand">MASTERCARD</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="back-content">
-                                <div class="back-logo">💼</div>
-                                <h3 class="back-title">Boursorama</h3>
-                                <p class="back-text">Boursorama est une banque en ligne française filiale de Société Générale. Elle propose des services bancaires sans frais et des outils d'investissement accessibles.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carte 5 - La Poste -->
-                <div class="bank-card card-la-poste" data-index="4">
-                    <div class="card-flipper">
-                        <div class="card-front">
-                            <div class="card-content">
-                                <div class="card-logo">📮</div>
-                                <div class="card-chip"></div>
-                                <div class="card-number">5512 9847 3456 7821</div>
-                                <div class="card-footer">
-                                    <div class="card-holder">
-                                        <span class="label">TITULAIRE</span>
-                                        <span class="name">PIERRE LEFEVRE</span>
-                                    </div>
-                                    <div class="card-expiry">
-                                        <span class="label">EXPIRE</span>
-                                        <span class="date">11/25</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-brand">VISA</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="back-content">
-                                <div class="back-logo">📮</div>
-                                <h3 class="back-title">La Poste</h3>
-                                <p class="back-text">La Banque Postale, filiale du groupe La Poste depuis 2006, propose des services bancaires accessibles dans les bureaux de poste français avec un service de proximité.</p>
-                            </div>
-                        </div>
-                    </div>
+    <div class="app-wrapper">
+        <!-- Header -->
+        <div class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">Cartes</h1>
+                <div class="header-icons">
+                    <button class="icon-btn">⚙️</button>
                 </div>
             </div>
+        </div>
+
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Cards Carousel -->
+            <div class="cards-section">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <!-- Carte 1 -->
+                        <div class="bank-card" data-index="0">
+                            <div class="card-gradient card-gradient-1"></div>
+                            <div class="card-inner">
+                                <div class="card-top">
+                                    <span class="card-icon">🌾</span>
+                                    <span class="card-type">PRINCIPAL</span>
+                                </div>
+                                <div class="card-middle">
+                                    <div class="card-chip"></div>
+                                </div>
+                                <div class="card-bottom">
+                                    <div class="card-info">
+                                        <div class="card-number">5234 8573 9218 4756</div>
+                                        <div class="card-holder-info">
+                                            <span class="card-label">Titulaire</span>
+                                            <span class="card-name">JOHN SMITH</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-expiry-info">
+                                        <span class="card-label">Expire</span>
+                                        <span class="card-date">12/28</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Carte 2 -->
+                        <div class="bank-card" data-index="1">
+                            <div class="card-gradient card-gradient-2"></div>
+                            <div class="card-inner">
+                                <div class="card-top">
+                                    <span class="card-icon">⚡</span>
+                                    <span class="card-type">REVOLUT</span>
+                                </div>
+                                <div class="card-middle">
+                                    <div class="card-chip"></div>
+                                </div>
+                                <div class="card-bottom">
+                                    <div class="card-info">
+                                        <div class="card-number">4892 1765 3847 2934</div>
+                                        <div class="card-holder-info">
+                                            <span class="card-label">Titulaire</span>
+                                            <span class="card-name">MARIE DUPONT</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-expiry-info">
+                                        <span class="card-label">Expire</span>
+                                        <span class="card-date">09/27</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Carte 3 -->
+                        <div class="bank-card" data-index="2">
+                            <div class="card-gradient card-gradient-3"></div>
+                            <div class="card-inner">
+                                <div class="card-top">
+                                    <span class="card-icon">🏛️</span>
+                                    <span class="card-type">SECONDAIRE</span>
+                                </div>
+                                <div class="card-middle">
+                                    <div class="card-chip"></div>
+                                </div>
+                                <div class="card-bottom">
+                                    <div class="card-info">
+                                        <div class="card-number">6011 2847 5930 1847</div>
+                                        <div class="card-holder-info">
+                                            <span class="card-label">Titulaire</span>
+                                            <span class="card-name">JEAN MARTIN</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-expiry-info">
+                                        <span class="card-label">Expire</span>
+                                        <span class="card-date">03/26</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Carte 4 -->
+                        <div class="bank-card" data-index="3">
+                            <div class="card-gradient card-gradient-4"></div>
+                            <div class="card-inner">
+                                <div class="card-top">
+                                    <span class="card-icon">💼</span>
+                                    <span class="card-type">BUSINESS</span>
+                                </div>
+                                <div class="card-middle">
+                                    <div class="card-chip"></div>
+                                </div>
+                                <div class="card-bottom">
+                                    <div class="card-info">
+                                        <div class="card-number">3782 8475 6912 3456</div>
+                                        <div class="card-holder-info">
+                                            <span class="card-label">Titulaire</span>
+                                            <span class="card-name">SOPHIE BERNARD</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-expiry-info">
+                                        <span class="card-label">Expire</span>
+                                        <span class="card-date">07/29</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Carte 5 -->
+                        <div class="bank-card" data-index="4">
+                            <div class="card-gradient card-gradient-5"></div>
+                            <div class="card-inner">
+                                <div class="card-top">
+                                    <span class="card-icon">📮</span>
+                                    <span class="card-type">ÉPARGNE</span>
+                                </div>
+                                <div class="card-middle">
+                                    <div class="card-chip"></div>
+                                </div>
+                                <div class="card-bottom">
+                                    <div class="card-info">
+                                        <div class="card-number">5512 9847 3456 7821</div>
+                                        <div class="card-holder-info">
+                                            <span class="card-label">Titulaire</span>
+                                            <span class="card-name">PIERRE LEFEVRE</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-expiry-info">
+                                        <span class="card-label">Expire</span>
+                                        <span class="card-date">11/25</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Dots -->
+                <div class="carousel-nav">
+                    <button class="nav-dot active" data-index="0"></button>
+                    <button class="nav-dot" data-index="1"></button>
+                    <button class="nav-dot" data-index="2"></button>
+                    <button class="nav-dot" data-index="3"></button>
+                    <button class="nav-dot" data-index="4"></button>
+                </div>
+            </div>
+
+            <!-- Cards List -->
+            <div class="cards-list">
+                <h2 class="list-title">Toutes vos cartes</h2>
+                <div class="card-item active-card">
+                    <div class="card-item-left">
+                        <div class="card-item-icon">🌾</div>
+                        <div class="card-item-info">
+                            <p class="card-item-name">Crédit Agricol</p>
+                            <p class="card-item-number">5234 •••• •••• 4756</p>
+                        </div>
+                    </div>
+                    <span class="card-item-status">Actif</span>
+                </div>
+                <div class="card-item">
+                    <div class="card-item-left">
+                        <div class="card-item-icon">⚡</div>
+                        <div class="card-item-info">
+                            <p class="card-item-name">Revolut</p>
+                            <p class="card-item-number">4892 •••• •••• 2934</p>
+                        </div>
+                    </div>
+                    <span class="card-item-status">Actif</span>
+                </div>
+                <div class="card-item">
+                    <div class="card-item-left">
+                        <div class="card-item-icon">🏛️</div>
+                        <div class="card-item-info">
+                            <p class="card-item-name">Société Générale</p>
+                            <p class="card-item-number">6011 •••• •••• 1847</p>
+                        </div>
+                    </div>
+                    <span class="card-item-status">Actif</span>
+                </div>
+                <div class="card-item">
+                    <div class="card-item-left">
+                        <div class="card-item-icon">💼</div>
+                        <div class="card-item-info">
+                            <p class="card-item-name">Boursorama</p>
+                            <p class="card-item-number">3782 •••• •••• 3456</p>
+                        </div>
+                    </div>
+                    <span class="card-item-status">Inactif</span>
+                </div>
+                <div class="card-item">
+                    <div class="card-item-left">
+                        <div class="card-item-icon">📮</div>
+                        <div class="card-item-info">
+                            <p class="card-item-name">La Poste</p>
+                            <p class="card-item-number">5512 •••• •••• 7821</p>
+                        </div>
+                    </div>
+                    <span class="card-item-status">Actif</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <button class="nav-item active">
+                <span class="nav-icon">💳</span>
+                <span class="nav-label">Cartes</span>
+            </button>
+            <button class="nav-item">
+                <span class="nav-icon">📈</span>
+                <span class="nav-label">Dépenses</span>
+            </button>
+            <button class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-label">Paramètres</span>
+            </button>
         </div>
     </div>
 

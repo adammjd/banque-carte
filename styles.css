@@ -5,39 +5,76 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background: #f5f5f7;
     min-height: 100vh;
-    padding: 40px 20px;
+    color: #1a1a1a;
+    overflow-x: hidden;
+}
+
+.app-wrapper {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.app-header {
+    background: white;
+    border-bottom: 1px solid #e5e5e7;
+    padding: 16px 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    color: #333;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.app-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.header-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: #f5f5f7;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.icon-btn:active {
+    background: #e8e8eb;
 }
 
 .container {
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 40px;
-    font-size: 2.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+.cards-section {
+    max-width: 600px;
+    margin: 0 auto 30px;
 }
 
-/* Carousel vertical */
 .carousel-container {
-    width: 100%;
-    height: 500px;
-    perspective: 1200px;
     position: relative;
-    margin-bottom: 100px;
+    height: 320px;
+    margin-bottom: 20px;
 }
 
 .carousel-track {
@@ -46,507 +83,275 @@ h1 {
     height: 100%;
 }
 
-/* Cartes bancaires */
 .bank-card {
     position: absolute;
-    width: 95%;
-    height: 500px;
-    color: white;
-    padding: 35px 30px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
-                opacity 0.6s ease,
-                box-shadow 0.6s ease;
-    overflow: hidden;
     top: 0;
-    left: 2.5%;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-}
-
-.card-front {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-}
-
-.bank-card::after {
-    content: '';
-    position: absolute;
-    bottom: -80px;
     left: 0;
-    right: 0;
-    height: 80px;
-    background: linear-gradient(to bottom, 
-        rgba(255, 255, 255, 0.2) 0%, 
-        rgba(255, 255, 255, 0.1) 50%, 
-        transparent 100%);
-    border-radius: 50% 50% 0 0;
-    transform: scaleX(0.9);
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
     pointer-events: none;
-}
-
-.bank-logo {
-    font-size: 3em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-}
-
-.card-logo {
-    font-size: 2.5em;
-    margin-bottom: 15px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.chip {
-    background: rgba(255, 215, 0, 0.3);
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 1.2em;
-    border: 2px solid rgba(255, 215, 0, 0.5);
-    font-weight: bold;
-    color: #FFD700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* Couleurs différentes pour chaque carte */
-.bank-card.card-credit-agricol {
-    background: linear-gradient(135deg, #006633 0%, #009944 100%);
-}
-
-.bank-card.card-revolut {
-    background: linear-gradient(135deg, #0D47A1 0%, #1565C0 100%);
-}
-
-.bank-card.card-societe-generale {
-    background: linear-gradient(135deg, #001C3D 0%, #003D82 100%);
-}
-
-.bank-card.card-boursorama {
-    background: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);
-}
-
-.bank-card.card-la-poste {
-    background: linear-gradient(135deg, #003DA5 0%, #0052CC 100%);
-}
-
-.bank-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .bank-card.active {
-    z-index: 100;
-    transform: translateY(0) translateX(0) rotateZ(-8deg) rotateY(-5deg) rotateX(0deg);
     opacity: 1;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+    z-index: 10;
 }
 
-.bank-card.next {
-    z-index: 99;
-    transform: translateY(20px) translateX(25px) rotateZ(-5deg) rotateY(-3deg);
-    opacity: 0.9;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
+.card-gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
 }
 
-.bank-card.next2 {
-    z-index: 98;
-    transform: translateY(40px) translateX(50px) rotateZ(-2deg) rotateY(-1deg);
-    opacity: 0.8;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+.card-gradient-1 {
+    background: linear-gradient(135deg, #00A86B 0%, #00D67A 100%);
 }
 
-/* Animation de sortie vers le bas */
-.bank-card.exit-bottom {
-    z-index: 97;
-    transform: translateY(600px) translateX(0) rotateZ(0deg) rotateY(0deg);
-    opacity: 0;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    pointer-events: none;
+.card-gradient-2 {
+    background: linear-gradient(135deg, #0066FF 0%, #0081FF 100%);
 }
 
-/* Carte cachée derrière qui devient visible */
-.bank-card.hidden-back {
-    z-index: 97;
-    transform: translateY(60px) translateX(75px) rotateZ(1deg) rotateY(0deg);
-    opacity: 0.7;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
-    pointer-events: none;
+.card-gradient-3 {
+    background: linear-gradient(135deg, #1A1A2E 0%, #333366 100%);
 }
 
-.bank-card > * {
+.card-gradient-4 {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8A50 100%);
+}
+
+.card-gradient-5 {
+    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+}
+
+.card-inner {
     position: relative;
-    z-index: 2;
+    width: 100%;
+    height: 100%;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
 }
 
-.card-number {
-    font-size: 1.6em;
-    letter-spacing: 3px;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    color: #FFFFFF;
-    margin: 30px 0 20px 0;
-    font-family: 'Courier New', monospace;
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.card-footer {
+.card-icon {
+    font-size: 32px;
+}
+
+.card-type {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    opacity: 0.85;
+}
+
+.card-middle {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-chip {
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.6), rgba(255, 215, 0, 0.3));
+    border-radius: 6px;
+    border: 2px solid rgba(255, 215, 0, 0.4);
+}
+
+.card-bottom {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
 
-.card-holder {
+.card-info {
+    flex: 1;
+}
+
+.card-number {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    font-family: 'Courier New', monospace;
+}
+
+.card-holder-info {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
 }
 
-.card-holder .label {
-    font-size: 0.65em;
-    opacity: 0.8;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 2px;
-}
-
-.card-holder .name {
-    font-size: 1.1em;
+.card-label {
+    font-size: 10px;
+    opacity: 0.75;
     font-weight: 600;
-    color: #FFFFFF;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
 }
 
-.card-expiry {
+.card-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.card-expiry-info {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
     text-align: right;
 }
 
-.card-expiry .label {
-    font-size: 0.65em;
-    opacity: 0.8;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    font-weight: 700;
-}
-
-.card-expiry .date {
-    font-size: 1.1em;
+.card-date {
+    font-size: 14px;
     font-weight: 600;
-    color: #FFFFFF;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.card-brand {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    font-size: 1.4em;
-    font-weight: bold;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-    letter-spacing: 1px;
-}
-
-/* Contrôles du carrousel */
-.carousel-controls {
-    display: none;
-}
-
-/* Cartes bancaires avec animation flip */
-.bank-card {
-    position: absolute;
-    width: 95%;
-    height: 500px;
-    color: white;
-    padding: 35px 30px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
-                opacity 0.6s ease,
-                box-shadow 0.6s ease;
-    overflow: hidden;
-    top: 0;
-    left: 2.5%;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    perspective: 1000px;
-}
-
-.card-flipper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transform-style: preserve-3d;
-}
-
-.bank-card.flipped .card-flipper {
-    transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-front {
-    justify-content: space-between;
-    z-index: 2;
-}
-
-.card-back {
-    transform: rotateY(180deg);
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 40px;
-    z-index: 1;
-}
-
-.back-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.back-logo {
-    font-size: 3em;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.back-title {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    margin: 0;
-}
-
-.back-text {
-    font-size: 0.85em;
-    line-height: 1.6;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    margin: 0;
-}
-
-/* Animation pour agrandir et mettre la carte à l'horizontale */
-.bank-card.expanding {
-    position: fixed !important;
-    z-index: 1000 !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    width: 85vw !important;
-    max-width: 1100px !important;
-    height: 55vh !important;
-    max-height: 650px !important;
-    pointer-events: auto !important;
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
-    border-radius: 30px !important;
-}
-
-.bank-card.expanding .card-flipper {
-    transform: rotateY(180deg) !important;
-    height: 100% !important;
-}
-
-.bank-card.expanding .card-back {
-    justify-content: center !important;
-    align-items: center !important;
-    padding: 60px 40px !important;
-}
-
-/* Overlay */
-.carousel-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    display: none;
-    pointer-events: auto;
-}
-
-.carousel-overlay.show {
-    display: block;
-}
-
-/* Modal d'informations */
-.card-info-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
+.carousel-nav {
     display: flex;
     justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    gap: 8px;
+    margin-bottom: 40px;
 }
 
-.card-info-container.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.card-info-content {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 600px;
-    width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-    animation: slideUp 0.3s ease;
-    color: #333;
-}
-
-.info-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #eee;
-}
-
-.info-logo {
-    font-size: 3em;
-    min-width: 80px;
-    text-align: center;
-}
-
-.info-header h3 {
-    margin: 0;
-    color: #333;
-    font-size: 1.8em;
-}
-
-.info-body {
-    color: #333;
-}
-
-.info-body h4 {
-    color: #667eea;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 1.1em;
-}
-
-.info-body p {
-    color: #333;
-    line-height: 1.8;
-    font-size: 0.95em;
-    margin-bottom: 15px;
-    text-align: justify;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.card-info-content.hidden {
-    display: none;
-}
-
-.close-info {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #667eea;
-    color: white;
-    border: none;
-    width: 40px;
-    height: 40px;
+.nav-dot {
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    font-size: 24px;
+    border: none;
+    background: #ccc;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
 }
 
-.close-info:hover {
-    background: #764ba2;
-    transform: scale(1.1);
+.nav-dot.active {
+    background: #1a1a1a;
+    width: 24px;
+    border-radius: 4px;
 }
 
-.card-info-content h3 {
-    color: #667eea;
-    margin-bottom: 20px;
-    font-size: 1.8em;
-    border-bottom: 2px solid #667eea;
-    padding-bottom: 10px;
+.cards-list {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.card-info-content h4 {
-    color: #764ba2;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 1.1em;
+.list-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #1a1a1a;
 }
 
-.card-info-content p {
-    color: #333;
-    line-height: 1.8;
-    font-size: 0.95em;
-    margin-bottom: 15px;
-    text-align: justify;
+.card-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    margin-bottom: 12px;
+    background: white;
+    border-radius: 12px;
+    transition: all 0.2s;
+    border: 1px solid #f0f0f0;
+    cursor: pointer;
 }
 
-.hidden {
-    display: none !important;
+.card-item:active {
+    background: #f9f9f9;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .carousel-container {
-        height: 400px;
-    }
+.card-item.active-card {
+    background: #f5f5f7;
+    border-color: #e5e5e7;
+}
 
-    .bank-card {
-        height: 400px;
-        padding: 30px 20px;
-    }
+.card-item-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
 
-    .card-number {
-        font-size: 1.5em;
-    }
+.card-item-icon {
+    font-size: 24px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f7;
+    border-radius: 12px;
+}
 
-    h1 {
-        font-size: 1.8em;
-        margin-bottom: 30px;
-    }
+.card-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
 
-    .card-info-content {
-        padding: 30px 20px;
-        max-height: 70vh;
-    }
+.card-item-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    color: #1a1a1a;
+}
+
+.card-item-number {
+    font-size: 13px;
+    margin: 0;
+    color: #86868b;
+}
+
+.card-item-status {
+    font-size: 13px;
+    font-weight: 500;
+    color: #86868b;
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    background: white;
+    border-top: 1px solid #e5e5e7;
+    padding: 8px 0;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #86868b;
+    flex: 1;
+}
+
+.nav-item.active {
+    color: #1a1a1a;
+}
+
+.nav-icon {
+    font-size: 24px;
+}
+
+.nav-label {
+    font-size: 11px;
+    font-weight: 500;
 }

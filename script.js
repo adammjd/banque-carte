@@ -63,6 +63,23 @@ const backgroundClasses = {
     metal: ['bg-platinum', 'bg-gold', 'bg-black']
 };
 
+// Créer les vagues pour l'effet océan
+function createOceanWaves() {
+    let wavesContainer = document.querySelector('.ocean-waves');
+    if (!wavesContainer) {
+        wavesContainer = document.createElement('div');
+        wavesContainer.className = 'ocean-waves';
+        wavesContainer.innerHTML = `
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+            <div class="wave wave4"></div>
+        `;
+        document.body.appendChild(wavesContainer);
+    }
+    return wavesContainer;
+}
+
 // Fonction pour changer le fond
 function updateBackground() {
     // Retirer toutes les classes de fond
@@ -77,10 +94,22 @@ function updateBackground() {
     fingerprintsOverlay.classList.remove('show');
     vibrationOverlay.classList.remove('show');
     
+    // Gérer les vagues de l'océan
+    const wavesContainer = document.querySelector('.ocean-waves');
+    if (wavesContainer) {
+        wavesContainer.style.display = 'none';
+    }
+    
     // Ajouter la classe de fond correspondante
     const bgClass = backgroundClasses[currentCategory][currentIndex];
     if (bgClass) {
         document.body.classList.add(bgClass);
+        
+        // Effet vagues pour Ocean Card
+        if (bgClass === 'bg-ocean') {
+            const waves = createOceanWaves();
+            waves.style.display = 'block';
+        }
         
         // Effets spéciaux pour Metal Cards
         if (currentCategory === 'metal') {

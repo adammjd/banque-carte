@@ -47,50 +47,97 @@ body.bg-ocean {
     overflow: hidden;
 }
 
-body.bg-ocean::before,
-body.bg-ocean::after {
-    content: '';
+/* Conteneur des vagues */
+.ocean-waves {
     position: fixed;
+    bottom: 0;
     left: 0;
-    right: 0;
-    height: 200px;
+    width: 100%;
+    height: 250px;
     pointer-events: none;
     z-index: 0;
+    overflow: hidden;
 }
 
-body.bg-ocean::before {
+.ocean-waves .wave {
+    position: absolute;
     bottom: 0;
-    background: 
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%230099cc' fill-opacity='0.6' d='M0,160L48,170.7C96,181,192,203,288,192C384,181,480,139,576,128C672,117,768,139,864,165.3C960,192,1056,224,1152,218.7C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-    background-size: cover;
-    background-repeat: no-repeat;
-    animation: wave1 8s ease-in-out infinite;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-repeat: repeat-x;
+    transform-origin: center bottom;
 }
 
-body.bg-ocean::after {
-    bottom: -20px;
-    background: 
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2300b4d8' fill-opacity='0.5' d='M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,234.7C672,245,768,235,864,208C960,181,1056,139,1152,138.7C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-    background-size: cover;
-    background-repeat: no-repeat;
-    animation: wave2 6s ease-in-out infinite;
+.ocean-waves .wave1 {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23006994' fill-opacity='0.8' d='M0,192L60,197.3C120,203,240,213,360,229.3C480,245,600,267,720,250.7C840,235,960,181,1080,176C1200,171,1320,213,1380,234.7L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 50% 100%;
+    animation: wave-animation1 12s linear infinite;
+    z-index: 4;
+    opacity: 1;
+    bottom: 0;
 }
 
-@keyframes wave1 {
-    0%, 100% {
-        transform: translateX(0) translateY(0);
+.ocean-waves .wave2 {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%230099cc' fill-opacity='0.7' d='M0,160L60,170.7C120,181,240,203,360,192C480,181,600,139,720,138.7C840,139,960,181,1080,197.3C1200,213,1320,203,1380,197.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 50% 100%;
+    animation: wave-animation2 10s linear infinite;
+    z-index: 3;
+    opacity: 0.9;
+    bottom: 15px;
+}
+
+.ocean-waves .wave3 {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2300b4d8' fill-opacity='0.6' d='M0,224L60,213.3C120,203,240,181,360,186.7C480,192,600,224,720,218.7C840,213,960,171,1080,165.3C1200,160,1320,192,1380,208L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 50% 100%;
+    animation: wave-animation3 8s linear infinite;
+    z-index: 2;
+    opacity: 0.8;
+    bottom: 30px;
+}
+
+.ocean-waves .wave4 {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2390e0ef' fill-opacity='0.5' d='M0,288L60,277.3C120,267,240,245,360,240C480,235,600,245,720,261.3C840,277,960,299,1080,288C1200,277,1320,235,1380,213.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 50% 100%;
+    animation: wave-animation4 14s linear infinite;
+    z-index: 1;
+    opacity: 0.6;
+    bottom: 50px;
+}
+
+@keyframes wave-animation1 {
+    0% {
+        transform: translateX(0);
     }
-    50% {
-        transform: translateX(-25px) translateY(10px);
+    100% {
+        transform: translateX(-50%);
     }
 }
 
-@keyframes wave2 {
-    0%, 100% {
-        transform: translateX(0) translateY(0);
+@keyframes wave-animation2 {
+    0% {
+        transform: translateX(-50%);
     }
-    50% {
-        transform: translateX(30px) translateY(-10px);
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes wave-animation3 {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes wave-animation4 {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
     }
 }
 

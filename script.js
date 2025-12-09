@@ -55,77 +55,55 @@ const cardsData = {
 
 // Fonction pour mettre à jour les classes des cartes
 // Variable pour stocker l'angle de rotation actuel (pour animation fluide)
-let metalRotation = 0;
+let carouselRotation = 0;
 
 function updateCarousel() {
-    if (currentCategory === 'metal') {
-        // Carrousel circulaire 3D pour Metal Cards - comme sur les photos
-        const totalCards = bankCards.length;
-        const angleSlice = 360 / totalCards;
-        const radius = 500; // Rayon du cercle
-        
-        // Calculer l'angle de rotation basé sur l'index courant
-        metalRotation = currentIndex * angleSlice;
+    // Carrousel circulaire 3D pour les deux catégories
+    const totalCards = bankCards.length;
+    const angleSlice = 360 / totalCards;
+    const radius = 500; // Rayon du cercle
+    
+    // Calculer l'angle de rotation basé sur l'index courant
+    carouselRotation = currentIndex * angleSlice;
 
-        bankCards.forEach((card, index) => {
-            // Angle de cette carte dans le cercle
-            const cardAngle = (index * angleSlice) - metalRotation;
-            const angleRad = (cardAngle * Math.PI) / 180;
-            
-            // Position sur le cercle horizontal (X et Z)
-            const x = Math.sin(angleRad) * radius;
-            const z = Math.cos(angleRad) * radius - radius; // Décalé pour que le centre soit devant
-            
-            // Rotation Y pour que la carte soit tangente au cercle
-            const rotationY = -cardAngle;
-            
-            // Légère inclinaison pour effet 3D flottant
-            const rotationX = 5;
-            const rotationZ = cardAngle * 0.1;
-            
-            // Transform 3D complet
-            card.style.transform = `
-                translateX(${x}px) 
-                translateZ(${z}px) 
-                rotateY(${rotationY}deg)
-                rotateX(${rotationX}deg)
-                rotateZ(${rotationZ}deg)
-            `;
-            
-            // Z-index basé sur la profondeur
-            card.style.zIndex = Math.floor(z + 600);
-            
-            // Toutes les cartes sont visibles mais avec opacité variable
-            const normalizedZ = (z + radius) / (2 * radius); // 0 à 1
-            const opacity = 0.3 + normalizedZ * 0.7;
-            card.style.opacity = opacity;
-            card.style.visibility = 'visible';
-            card.style.pointerEvents = z > -300 ? 'auto' : 'none';
-        });
-    } else {
-        // Carrousel vertical normal pour Standard
-        bankCards.forEach((card, index) => {
-            card.classList.remove('active', 'next', 'next2', 'exit-bottom', 'hidden-back');
-            card.style.transform = '';
-            card.style.visibility = 'visible';
-            card.style.opacity = '1';
-            card.style.pointerEvents = 'auto';
-            
-            const position = (index - currentIndex + bankCards.length) % bankCards.length;
-            
-            if (position === 0) {
-                card.classList.add('active');
-            } else if (position === 1) {
-                card.classList.add('next');
-            } else if (position === 2) {
-                card.classList.add('next2');
-            } else if (position === 3) {
-                card.classList.add('hidden-back');
-            } else if (position === bankCards.length - 1) {
-                card.classList.add('exit-bottom');
-            }
-        });
-    }
+    bankCards.forEach((card, index) => {
+        // Retirer les anciennes classes
+        card.classList.remove('active', 'next', 'next2', 'exit-bottom', 'hidden-back');
+        
+        // Angle de cette carte dans le cercle
+        const cardAngle = (index * angleSlice) - carouselRotation;
+        const angleRad = (cardAngle * Math.PI) / 180;
+        
+        // Position sur le cercle horizontal (X et Z)
+        const x = Math.sin(angleRad) * radius;
+        const z = Math.cos(angleRad) * radius - radius; // Décalé pour que le centre soit devant
+        
+        // Rotation Y pour que la carte soit tangente au cercle
+        const rotationY = -cardAngle;
+        
+        // Légère inclinaison pour effet 3D flottant
+        const rotationX = 5;
+        const rotationZ = cardAngle * 0.1;
+        
+        // Transform 3D complet
+        card.style.transform = `
+            translateX(${x}px) 
+            translateZ(${z}px) 
+            rotateY(${rotationY}deg)
+            rotateX(${rotationX}deg)
+            rotateZ(${rotationZ}deg)
+        `;
+        
+        // Z-index basé sur la profondeur
+        card.style.zIndex = Math.floor(z + 600);
+        
+        // Toutes les cartes sont visibles mais avec opacité variable
+        const normalizedZ = (z + radius) / (2 * radius); // 0 à 1
+        const opacity = 0.3 + normalizedZ * 0.7;
+        card.style.opacity = opacity;
+        card.style.visibility = 'visible';
+        card.style.pointerEvents = z > -300 ? 'auto' : 'none';
+    });
 }
 
 // Navigation

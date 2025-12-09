@@ -466,18 +466,18 @@ h1 {
 /* Bouteille écrasée au centre */
 .ocean-bottle-crushed {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -45%) rotate(-35deg);
-    width: 100px;
-    height: 160px;
+    left: 55%;
+    top: 55%;
+    transform: translate(-50%, -50%) rotate(-40deg);
+    width: 90px;
+    height: 175px;
     z-index: 2;
 }
 
 .ocean-bottle-crushed svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(3px 5px 8px rgba(0,0,0,0.3));
+    filter: drop-shadow(4px 6px 10px rgba(0,0,0,0.35));
 }
 
 .ocean-chip {

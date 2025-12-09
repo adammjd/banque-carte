@@ -409,76 +409,84 @@ h1 {
     height: 100%;
     display: flex;
     flex-direction: column;
+    background: white;
 }
 
-/* Zone bleue en haut */
+/* Zone bleue en haut - couvre presque toute la carte */
 .voice-top-section {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 55%;
-    background: linear-gradient(180deg, #2D3A8C 0%, #3B4BA8 100%);
+    height: 60%;
+    background: linear-gradient(180deg, #2A3990 0%, #3444A8 100%);
     border-radius: 15px 15px 0 0;
 }
 
 .voice-chip {
     position: absolute;
     left: 50%;
-    top: 35%;
+    top: 22%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 40px;
-    background: linear-gradient(145deg, #F5E6D3 0%, #D4B896 30%, #C9A87C 100%);
-    border-radius: 8px;
-    box-shadow: inset 0 0 0 2px rgba(0,0,0,0.1),
-                0 2px 4px rgba(0,0,0,0.2);
+    width: 45px;
+    height: 36px;
+    background: linear-gradient(145deg, #F5E6D3 0%, #E8D5B8 50%, #D4C4A8 100%);
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    z-index: 10;
 }
 
 .voice-chip::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 35px;
-    height: 25px;
-    border: 1px solid rgba(139, 115, 85, 0.4);
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    background: 
+        linear-gradient(90deg, transparent 30%, rgba(180,160,130,0.5) 32%, rgba(180,160,130,0.5) 34%, transparent 36%),
+        linear-gradient(90deg, transparent 48%, rgba(180,160,130,0.5) 50%, rgba(180,160,130,0.5) 52%, transparent 54%),
+        linear-gradient(90deg, transparent 64%, rgba(180,160,130,0.5) 66%, rgba(180,160,130,0.5) 68%, transparent 70%),
+        linear-gradient(0deg, transparent 40%, rgba(180,160,130,0.5) 42%, rgba(180,160,130,0.5) 58%, transparent 60%);
     border-radius: 3px;
 }
 
-/* Barres qui coulent comme l'image */
+/* Barres qui coulent - style gouttes arrondies */
 .voice-waves-drip {
     position: absolute;
-    top: 45%;
+    top: 42%;
     left: 0;
     right: 0;
-    height: 30%;
+    height: 45%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 3px;
+    gap: 2px;
+    z-index: 5;
 }
 
 .drip-bar {
-    width: 12px;
-    background: #00D4FF;
-    border-radius: 0 0 6px 6px;
+    width: 14px;
+    background: #00E5FF;
+    border-radius: 0 0 50px 50px;
     position: relative;
 }
 
-.drip-bar:nth-child(1) { height: 35px; }
-.drip-bar:nth-child(2) { height: 55px; }
-.drip-bar:nth-child(3) { height: 70px; }
-.drip-bar:nth-child(4) { height: 85px; }
-.drip-bar:nth-child(5) { height: 95px; }
-.drip-bar:nth-child(6) { height: 100px; }
-.drip-bar:nth-child(7) { height: 95px; }
-.drip-bar:nth-child(8) { height: 85px; }
-.drip-bar:nth-child(9) { height: 70px; }
-.drip-bar:nth-child(10) { height: 55px; }
-.drip-bar:nth-child(11) { height: 35px; }
-.drip-bar:nth-child(12) { height: 25px; }
+/* Pattern asymétrique comme l'image - gauche */
+.drip-bar:nth-child(1) { height: 25px; margin-top: 30px; }
+.drip-bar:nth-child(2) { height: 50px; margin-top: 15px; }
+.drip-bar:nth-child(3) { height: 70px; margin-top: 5px; }
+.drip-bar:nth-child(4) { height: 45px; margin-top: 20px; }
+.drip-bar:nth-child(5) { height: 90px; margin-top: 0; }
+.drip-bar:nth-child(6) { height: 65px; margin-top: 10px; }
+/* Centre - plus hauts */
+.drip-bar:nth-child(7) { height: 105px; margin-top: 0; }
+.drip-bar:nth-child(8) { height: 85px; margin-top: 5px; }
+.drip-bar:nth-child(9) { height: 95px; margin-top: 0; }
+/* Droite */
+.drip-bar:nth-child(10) { height: 60px; margin-top: 15px; }
+.drip-bar:nth-child(11) { height: 40px; margin-top: 25px; }
+.drip-bar:nth-child(12) { height: 55px; margin-top: 18px; }
 
 /* Zone blanche en bas */
 .voice-bottom-section {
@@ -486,22 +494,23 @@ h1 {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 25%;
+    height: 30%;
     background: white;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-end;
-    padding: 15px 20px;
+    padding: 12px 18px;
+    z-index: 1;
 }
 
 .bluetooth-icon {
     position: absolute;
-    right: 20px;
-    bottom: 50px;
-    width: 24px;
-    height: 24px;
-    color: #3B82F6;
+    right: 18px;
+    bottom: 45px;
+    width: 22px;
+    height: 22px;
+    color: #2563EB;
 }
 
 .bluetooth-icon svg {
@@ -511,14 +520,14 @@ h1 {
 
 .voice-card-design .card-brand-logo {
     position: absolute;
-    bottom: 15px;
-    right: 20px;
+    bottom: 12px;
+    right: 18px;
     left: auto;
     top: auto;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
     color: #1E3A8A;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 
 .card-brand-logo {

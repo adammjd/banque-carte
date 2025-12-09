@@ -56,38 +56,49 @@ const cardsData = {
 // Fonction pour mettre à jour les classes des cartes
 function updateCarousel() {
     if (currentCategory === 'metal') {
-        // Carrousel circulaire pour Metal Cards
+        // Carrousel circulaire 3D pour Metal Cards - comme sur les photos
         const totalCards = bankCards.length;
         const angleSlice = 360 / totalCards;
-        const radius = 280; // Distance du centre
+        const radius = 300; // Distance du centre
 
         bankCards.forEach((card, index) => {
             // Calculer l'angle pour cette carte
             const cardAngle = angleSlice * (index - currentIndex);
             const angleRad = (cardAngle * Math.PI) / 180;
             
-            // Positions 3D
+            // Positions 3D circulaires
             const x = Math.sin(angleRad) * radius;
             const z = Math.cos(angleRad) * radius;
             
-            // Rotation Y basée sur la position dans le cercle
+            // Rotation Y pour que la carte regarde vers le centre
             const rotationY = cardAngle;
             
-            // Transform 3D
+            // Transform 3D complet avec perspective
             card.style.transform = `translateZ(${z}px) translateX(${x}px) rotateY(${rotationY}deg)`;
             
-            // Z-index pour l'ordre de rendu
-            const zIndex = Math.round(z);
-            card.style.zIndex = zIndex;
+            // Z-index basé sur la profondeur (z)
+            card.style.zIndex = Math.floor(z + 300);
             
-            // Opacité basée sur la proximité
-            const opacity = 0.3 + (Math.cos(angleRad) * 0.7);
-            card.style.opacity = Math.max(0.2, opacity);
+            // Opacité progressive - seulement les cartes devant sont visibles
+            if (z > -150) {
+                const opacity = 0.4 + (z / 300) * 0.6;
+                card.style.opacity = opacity;
+                card.style.visibility = 'visible';
+                card.style.pointerEvents = 'auto';
+            } else {
+                card.style.opacity = 0;
+                card.style.visibility = 'hidden';
+                card.style.pointerEvents = 'none';
+            }
         });
     } else {
         // Carrousel vertical normal pour Standard
         bankCards.forEach((card, index) => {
             card.classList.remove('active', 'next', 'next2', 'exit-bottom', 'hidden-back');
+            card.style.transform = '';
+            card.style.visibility = 'visible';
+            card.style.opacity = '1';
+            card.style.pointerEvents = 'auto';
             
             const position = (index - currentIndex + bankCards.length) % bankCards.length;
             

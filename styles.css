@@ -817,6 +817,28 @@ h1 {
     justify-content: center !important;
     align-items: center !important;
     padding: 60px 40px !important;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+}
+
+.bank-card.expanding .card-back .back-content {
+    color: white !important;
+}
+
+.bank-card.expanding .card-back .back-logo {
+    font-size: 4em !important;
+}
+
+.bank-card.expanding .card-back .back-title {
+    font-size: 2.5em !important;
+    color: white !important;
+    margin-bottom: 20px !important;
+}
+
+.bank-card.expanding .card-back .back-text {
+    font-size: 1.2em !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    line-height: 1.8 !important;
+    text-align: center !important;
 }
 
 /* Overlay */

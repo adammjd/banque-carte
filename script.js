@@ -211,8 +211,21 @@ function closeExpanded() {
 // Event listeners sur les cartes
 function attachCardListeners() {
     bankCards.forEach((card, index) => {
+        // Retirer les anciens listeners pour éviter les doublons
+        card.replaceWith(card.cloneNode(true));
+    });
+    
+    // Re-sélectionner les cartes après clonage
+    bankCards = document.querySelectorAll(`#${currentCategory}-track .bank-card`);
+    
+    bankCards.forEach((card, index) => {
         card.addEventListener('click', (e) => {
-            if (!isExpanded) {
+            e.stopPropagation();
+            if (isExpanded) {
+                // Si une carte est agrandie, la fermer
+                closeExpanded();
+            } else {
+                // Sinon, agrandir cette carte
                 expandCard(index);
             }
         });

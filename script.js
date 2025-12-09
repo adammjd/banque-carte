@@ -81,6 +81,50 @@ function createOceanWaves() {
     return wavesContainer;
 }
 
+// Créer les arbres qui poussent pour PVC-FREE
+function createGrowingTrees() {
+    let treesContainer = document.querySelector('.growing-trees');
+    let grassGround = document.querySelector('.grass-ground');
+    
+    if (!grassGround) {
+        grassGround = document.createElement('div');
+        grassGround.className = 'grass-ground';
+        document.body.appendChild(grassGround);
+    }
+    
+    if (!treesContainer) {
+        treesContainer = document.createElement('div');
+        treesContainer.className = 'growing-trees';
+        
+        const treeTypes = ['pine', 'round', 'bush', 'pine', 'round', 'bush', 'pine', 'round', 'pine', 'bush'];
+        const treeSizes = ['small', 'medium', 'large', 'medium', 'small', 'large', 'medium', 'small', 'large', 'medium'];
+        
+        for (let i = 0; i < 10; i++) {
+            const tree = document.createElement('div');
+            tree.className = `tree ${treeTypes[i]} ${treeSizes[i]}`;
+            tree.innerHTML = `
+                <div class="tree-leaves"></div>
+                <div class="tree-trunk"></div>
+            `;
+            treesContainer.appendChild(tree);
+        }
+        
+        document.body.appendChild(treesContainer);
+        
+        // Ajouter la classe "grown" après l'animation initiale pour le balancement
+        setTimeout(() => {
+            const trees = treesContainer.querySelectorAll('.tree');
+            trees.forEach((tree, index) => {
+                setTimeout(() => {
+                    tree.classList.add('grown');
+                }, index * 500 + 3000);
+            });
+        }, 0);
+    }
+    
+    return treesContainer;
+}
+
 // Fonction pour changer le fond
 function updateBackground() {
     // Retirer toutes les classes de fond
@@ -101,6 +145,16 @@ function updateBackground() {
         wavesContainer.style.display = 'none';
     }
     
+    // Gérer les arbres qui poussent
+    const treesContainer = document.querySelector('.growing-trees');
+    const grassGround = document.querySelector('.grass-ground');
+    if (treesContainer) {
+        treesContainer.style.display = 'none';
+    }
+    if (grassGround) {
+        grassGround.style.display = 'none';
+    }
+    
     // Ajouter la classe de fond correspondante
     const bgClass = backgroundClasses[currentCategory][currentIndex];
     if (bgClass) {
@@ -110,6 +164,32 @@ function updateBackground() {
         if (bgClass === 'bg-ocean') {
             const waves = createOceanWaves();
             waves.style.display = 'block';
+        }
+        
+        // Effet arbres qui poussent pour PVC-FREE Card
+        if (bgClass === 'bg-pvc-free') {
+            const trees = createGrowingTrees();
+            trees.style.display = 'flex';
+            const grass = document.querySelector('.grass-ground');
+            if (grass) grass.style.display = 'block';
+            
+            // Relancer l'animation des arbres
+            const allTrees = trees.querySelectorAll('.tree');
+            allTrees.forEach(tree => {
+                tree.classList.remove('grown');
+                tree.style.animation = 'none';
+                tree.offsetHeight; // Force reflow
+                tree.style.animation = null;
+            });
+            
+            // Ajouter le balancement après la pousse
+            setTimeout(() => {
+                allTrees.forEach((tree, index) => {
+                    setTimeout(() => {
+                        tree.classList.add('grown');
+                    }, index * 300 + 2500);
+                });
+            }, 0);
         }
         
         // Effets spéciaux pour Metal Cards

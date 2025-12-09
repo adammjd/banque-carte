@@ -1,0 +1,138 @@
+// Configuration du carrousel
+const carouselTrack = document.querySelector('.carousel-track');
+const bankCards = document.querySelectorAll('.bank-card');
+const cardsData = [
+    {
+        title: 'Crédit Agricol',
+        logo: '🌾',
+        bankInfo: 'Crédit Agricol est l\'un des plus grands groupes bancaires français, fondé en 1894. Il propose des services bancaires complets pour les particuliers et les entreprises, avec une forte présence territoriale en France.'
+    },
+    {
+        title: 'Revolut',
+        logo: '⚡',
+        bankInfo: 'Revolut est une fintech basée à Londres proposant des services bancaires numériques révolutionnaires. Leader en matière de paiements internationaux et de transfert d\'argent à faible coût.'
+    },
+    {
+        title: 'Société Générale',
+        logo: '🏛️',
+        bankInfo: 'Société Générale, fondée en 1864, est l\'une des plus grandes banques de France. Elle offre une gamme complète de produits et services bancaires et financiers.'
+    },
+    {
+        title: 'Boursorama',
+        logo: '💼',
+        bankInfo: 'Boursorama est une banque en ligne française filiale de Société Générale. Elle propose des services bancaires sans frais et des outils d\'investissement accessibles.'
+    },
+    {
+        title: 'La Poste',
+        logo: '📮',
+        bankInfo: 'La Banque Postale, filiale du groupe La Poste depuis 2006, propose des services bancaires accessibles dans les bureaux de poste français avec un service de proximité.'
+    }
+];
+
+let currentIndex = 0;
+let isScrolling = false;
+let isExpanded = false;
+
+// Fonction pour mettre à jour les classes des cartes
+function updateCarousel() {
+    bankCards.forEach((card, index) => {
+        card.classList.remove('active', 'next', 'next2', 'exit-bottom', 'hidden-back');
+        
+        const position = (index - currentIndex + bankCards.length) % bankCards.length;
+        
+        if (position === 0) {
+            card.classList.add('active');
+        } else if (position === 1) {
+            card.classList.add('next');
+        } else if (position === 2) {
+            card.classList.add('next2');
+        } else if (position === 3) {
+            card.classList.add('hidden-back');
+        } else if (position === bankCards.length - 1) {
+            card.classList.add('exit-bottom');
+        }
+    });
+}
+
+// Navigation
+function nextCard() {
+    if (!isScrolling && !isExpanded) {
+        isScrolling = true;
+        currentIndex = (currentIndex + 1) % bankCards.length;
+        updateCarousel();
+        setTimeout(() => {
+            isScrolling = false;
+        }, 600);
+    }
+}
+
+function prevCard() {
+    if (!isScrolling && !isExpanded) {
+        isScrolling = true;
+        currentIndex = (currentIndex - 1 + bankCards.length) % bankCards.length;
+        updateCarousel();
+        setTimeout(() => {
+            isScrolling = false;
+        }, 600);
+    }
+}
+
+// Gestion du scroll
+document.addEventListener('wheel', (e) => {
+    if (!isExpanded) {
+        e.preventDefault();
+        if (e.deltaY > 0) {
+            nextCard();
+        } else if (e.deltaY < 0) {
+            prevCard();
+        }
+    }
+}, { passive: false });
+
+// Créer l'overlay
+const overlay = document.createElement('div');
+overlay.className = 'carousel-overlay';
+document.body.appendChild(overlay);
+
+// Fonction pour ouvrir la carte agrandie
+function expandCard(index) {
+    const card = bankCards[index];
+    
+    // Ajouter la classe pour agrandir et retourner
+    card.classList.add('expanding');
+    overlay.classList.add('show');
+    isExpanded = true;
+}
+
+// Fonction pour fermer la carte agrandie
+function closeExpanded() {
+    const expandedCard = document.querySelector('.bank-card.expanding');
+    if (expandedCard) {
+        expandedCard.classList.remove('expanding');
+        expandedCard.classList.remove('flipped');
+    }
+    overlay.classList.remove('show');
+    isExpanded = false;
+}
+
+// Event listeners sur les cartes
+bankCards.forEach((card, index) => {
+    card.addEventListener('click', (e) => {
+        if (!isExpanded) {
+            expandCard(index);
+        }
+    });
+});
+
+// Fermer en cliquant sur l'overlay
+overlay.addEventListener('click', closeExpanded);
+
+// Fermer avec Échap
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeExpanded();
+    if (e.key === 'ArrowUp') prevCard();
+    if (e.key === 'ArrowDown') nextCard();
+});
+
+// Initialiser
+updateCarousel();

@@ -517,32 +517,115 @@
                         </div>
                     </div>
 
-                    <!-- Carte 4 - Boursorama -->
+                    <!-- Carte 4 - Reduce -->
                     <div class="bank-card card-boursorama" data-index="3">
                         <div class="card-flipper">
                             <div class="card-front">
-                                <div class="card-content">
-                                    <div class="card-logo">💼</div>
-                                    <div class="card-chip"></div>
-                                    <div class="card-number">3782 847569 12345</div>
-                                    <div class="card-footer">
-                                        <div class="card-holder">
-                                            <span class="label">TITULAIRE</span>
-                                            <span class="name">SOPHIE BERNARD</span>
-                                        </div>
-                                        <div class="card-expiry">
-                                            <span class="label">EXPIRE</span>
-                                            <span class="date">07/29</span>
-                                        </div>
+                                <div class="card-content reduce-card-design">
+                                    <!-- Titre REDUCE -->
+                                    <div class="reduce-header">
+                                        <div class="reduce-title">REDUCE</div>
+                                        <div class="reduce-subtitle">fossil-based plastic usage</div>
                                     </div>
+                                    
+                                    <!-- Badge 84% -->
+                                    <div class="reduce-badge">
+                                        <span class="badge-percent">84%</span>
+                                        <span class="badge-text">bio-based PLA<br>derived from non-edible corn</span>
+                                    </div>
+                                    
+                                    <!-- Grande feuille avec ville intégrée -->
+                                    <svg class="reduce-leaf" viewBox="0 0 180 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <!-- Forme de la feuille -->
+                                        <defs>
+                                            <clipPath id="leafClip">
+                                                <path d="M90 10 Q150 30 160 100 Q165 160 90 210 Q15 160 20 100 Q30 30 90 10 Z"/>
+                                            </clipPath>
+                                            <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#81C784"/>
+                                                <stop offset="50%" style="stop-color:#66BB6A"/>
+                                                <stop offset="100%" style="stop-color:#4CAF50"/>
+                                            </linearGradient>
+                                        </defs>
+                                        
+                                        <!-- Fond de la feuille -->
+                                        <path d="M90 10 Q150 30 160 100 Q165 160 90 210 Q15 160 20 100 Q30 30 90 10 Z" fill="url(#leafGradient)"/>
+                                        
+                                        <!-- Contenu dans la feuille -->
+                                        <g clip-path="url(#leafClip)">
+                                            <!-- Ciel dans la feuille -->
+                                            <rect x="15" y="10" width="150" height="100" fill="#C8E6C9" opacity="0.5"/>
+                                            
+                                            <!-- Éoliennes -->
+                                            <g transform="translate(45, 50)">
+                                                <rect x="8" y="25" width="3" height="40" fill="#E8F5E9"/>
+                                                <ellipse cx="9.5" cy="25" rx="2" ry="18" fill="#E8F5E9" transform="rotate(0 9.5 25)"/>
+                                                <ellipse cx="9.5" cy="25" rx="2" ry="18" fill="#E8F5E9" transform="rotate(120 9.5 25)"/>
+                                                <ellipse cx="9.5" cy="25" rx="2" ry="18" fill="#E8F5E9" transform="rotate(240 9.5 25)"/>
+                                            </g>
+                                            <g transform="translate(65, 60)">
+                                                <rect x="8" y="20" width="2.5" height="35" fill="#E8F5E9"/>
+                                                <ellipse cx="9" cy="20" rx="1.5" ry="14" fill="#E8F5E9" transform="rotate(30 9 20)"/>
+                                                <ellipse cx="9" cy="20" rx="1.5" ry="14" fill="#E8F5E9" transform="rotate(150 9 20)"/>
+                                                <ellipse cx="9" cy="20" rx="1.5" ry="14" fill="#E8F5E9" transform="rotate(270 9 20)"/>
+                                            </g>
+                                            
+                                            <!-- Immeubles/Ville -->
+                                            <rect x="85" y="75" width="15" height="50" fill="#A5D6A7"/>
+                                            <rect x="102" y="85" width="12" height="40" fill="#81C784"/>
+                                            <rect x="116" y="70" width="18" height="55" fill="#A5D6A7"/>
+                                            <rect x="136" y="90" width="14" height="35" fill="#81C784"/>
+                                            
+                                            <!-- Fenêtres -->
+                                            <rect x="88" y="80" width="4" height="4" fill="#E8F5E9"/>
+                                            <rect x="88" y="90" width="4" height="4" fill="#E8F5E9"/>
+                                            <rect x="88" y="100" width="4" height="4" fill="#E8F5E9"/>
+                                            <rect x="120" y="75" width="5" height="5" fill="#E8F5E9"/>
+                                            <rect x="120" y="85" width="5" height="5" fill="#E8F5E9"/>
+                                            <rect x="120" y="95" width="5" height="5" fill="#E8F5E9"/>
+                                            <rect x="128" y="75" width="5" height="5" fill="#E8F5E9"/>
+                                            <rect x="128" y="85" width="5" height="5" fill="#E8F5E9"/>
+                                            
+                                            <!-- Vélo/Personne -->
+                                            <circle cx="130" cy="55" r="8" fill="#4CAF50"/>
+                                            <circle cx="130" cy="50" r="4" fill="#FFCC80"/>
+                                            
+                                            <!-- Champs/herbe -->
+                                            <rect x="25" y="120" width="130" height="40" fill="#66BB6A"/>
+                                            <rect x="30" y="140" width="50" height="25" fill="#81C784"/>
+                                            
+                                            <!-- Usine écologique -->
+                                            <rect x="35" y="100" width="25" height="40" fill="#78909C"/>
+                                            <rect x="38" y="85" width="6" height="20" fill="#90A4AE"/>
+                                            <rect x="50" y="90" width="6" height="15" fill="#90A4AE"/>
+                                        </g>
+                                        
+                                        <!-- Nervure centrale de la feuille -->
+                                        <path d="M90 30 Q90 110 90 190" stroke="#4CAF50" stroke-width="2" fill="none" opacity="0.5"/>
+                                        <path d="M90 60 Q70 70 55 65" stroke="#4CAF50" stroke-width="1" fill="none" opacity="0.4"/>
+                                        <path d="M90 90 Q110 100 130 95" stroke="#4CAF50" stroke-width="1" fill="none" opacity="0.4"/>
+                                        <path d="M90 120 Q65 130 45 125" stroke="#4CAF50" stroke-width="1" fill="none" opacity="0.4"/>
+                                    </svg>
+                                    
+                                    <!-- Puce et contactless -->
+                                    <div class="reduce-chip"></div>
+                                    <div class="reduce-contactless">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M8.5 12c0-2.5 2-4.5 4.5-4.5" stroke-linecap="round"/>
+                                            <path d="M6 12c0-4 3-7 7-7" stroke-linecap="round"/>
+                                            <path d="M3.5 12c0-5.5 4.5-10 10-10" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    
+                                    <!-- Logo THALES -->
+                                    <div class="reduce-thales">THALES</div>
                                 </div>
-                                <div class="card-brand">MASTERCARD</div>
                             </div>
                             <div class="card-back">
                                 <div class="back-content">
-                                    <div class="back-logo">💼</div>
-                                    <h3 class="back-title">Boursorama</h3>
-                                    <p class="back-text">Boursorama est une banque en ligne française filiale de Société Générale. Elle propose des services bancaires sans frais et des outils d'investissement accessibles.</p>
+                                    <div class="back-logo">🌿</div>
+                                    <h3 class="back-title">Reduce</h3>
+                                    <p class="back-text">Reduce est une carte écologique fabriquée à 84% de PLA bio-sourcé dérivé de maïs non comestible. Réduisez votre empreinte plastique.</p>
                                 </div>
                             </div>
                         </div>

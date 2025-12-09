@@ -26,6 +26,11 @@ const cardsData = [
         title: 'La Poste',
         logo: '📮',
         bankInfo: 'La Banque Postale, filiale du groupe La Poste depuis 2006, propose des services bancaires accessibles dans les bureaux de poste français avec un service de proximité.'
+    },
+    {
+        title: 'Metal Card',
+        logo: '💎',
+        bankInfo: 'Metal Card est la carte premium exclusive offrant des avantages luxe et une expérience VIP. Avec ses bénéfices exclusifs et son design métallique prestigieux, c\'est le prestige bancaire à portée de main.'
     }
 ];
 

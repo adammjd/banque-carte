@@ -132,6 +132,13 @@ h1 {
     background: linear-gradient(135deg, #A855F7 0%, #D8B4FE 100%);
 }
 
+.bank-card.card-metal {
+    background: linear-gradient(135deg, #C0A080 0%, #8B7355 50%, #A0826D 100%);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+                inset -2px -2px 5px rgba(255, 255, 255, 0.2),
+                inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
 .bank-card:hover {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);

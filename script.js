@@ -59,7 +59,7 @@ let carouselRotation = 0;
 
 // Mapping des cartes vers les classes de fond
 const backgroundClasses = {
-    standard: ['bg-credit-agricol', 'bg-revolut', 'bg-ocean', 'bg-boursorama', 'bg-la-poste'],
+    standard: ['bg-credit-agricol', 'bg-ocean', 'bg-revolut', 'bg-boursorama', 'bg-la-poste'],
     metal: ['bg-platinum', 'bg-gold', 'bg-black']
 };
 

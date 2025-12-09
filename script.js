@@ -72,9 +72,9 @@ function updateBackground() {
     );
     
     // Cacher les overlays
-    const eyesOverlay = document.getElementById('eyes-overlay');
+    const fingerprintsOverlay = document.getElementById('fingerprints-overlay');
     const vibrationOverlay = document.getElementById('vibration-overlay');
-    eyesOverlay.classList.remove('show');
+    fingerprintsOverlay.classList.remove('show');
     vibrationOverlay.classList.remove('show');
     
     // Ajouter la classe de fond correspondante
@@ -85,10 +85,10 @@ function updateBackground() {
         // Effets spéciaux pour Metal Cards
         if (currentCategory === 'metal') {
             if (bgClass === 'bg-gold') {
-                // Afficher les yeux pour Gold
-                eyesOverlay.classList.add('show');
+                // Afficher les empreintes pour Biometric Card
+                fingerprintsOverlay.classList.add('show');
             } else if (bgClass === 'bg-platinum') {
-                // Afficher les vibrations pour Platinum
+                // Afficher les vibrations pour Voice Card
                 vibrationOverlay.classList.add('show');
             }
         }
@@ -269,34 +269,6 @@ categoryBtns.forEach(btn => {
         updateCarousel();
     });
 });
-
-// Fonction pour faire suivre les yeux à la souris
-function initEyeTracking() {
-    const eyes = document.querySelectorAll('.eye');
-    
-    document.addEventListener('mousemove', (e) => {
-        eyes.forEach(eye => {
-            const eyeRect = eye.getBoundingClientRect();
-            const eyeCenterX = eyeRect.left + eyeRect.width / 2;
-            const eyeCenterY = eyeRect.top + eyeRect.height / 2;
-            
-            // Calculer l'angle vers la souris
-            const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
-            
-            // Distance maximale de déplacement de la pupille
-            const maxMove = 15;
-            const moveX = Math.cos(angle) * maxMove;
-            const moveY = Math.sin(angle) * maxMove;
-            
-            // Appliquer le mouvement aux pseudo-éléments via CSS custom properties
-            eye.style.setProperty('--pupil-x', `${moveX}px`);
-            eye.style.setProperty('--pupil-y', `${moveY}px`);
-        });
-    });
-}
-
-// Initialiser le suivi des yeux
-initEyeTracking();
 
 // Initialiser
 attachCardListeners();

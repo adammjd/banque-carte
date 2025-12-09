@@ -125,6 +125,26 @@ function createGrowingTrees() {
     return treesContainer;
 }
 
+// Créer les feuilles qui tombent pour Wood Card
+function createFallingLeaves() {
+    let leavesContainer = document.querySelector('.falling-leaves');
+    
+    if (!leavesContainer) {
+        leavesContainer = document.createElement('div');
+        leavesContainer.className = 'falling-leaves';
+        
+        for (let i = 0; i < 15; i++) {
+            const leaf = document.createElement('div');
+            leaf.className = 'leaf';
+            leavesContainer.appendChild(leaf);
+        }
+        
+        document.body.appendChild(leavesContainer);
+    }
+    
+    return leavesContainer;
+}
+
 // Fonction pour changer le fond
 function updateBackground() {
     // Retirer toutes les classes de fond
@@ -153,6 +173,12 @@ function updateBackground() {
     }
     if (grassGround) {
         grassGround.style.display = 'none';
+    }
+    
+    // Gérer les feuilles qui tombent
+    const leavesContainer = document.querySelector('.falling-leaves');
+    if (leavesContainer) {
+        leavesContainer.style.display = 'none';
     }
     
     // Ajouter la classe de fond correspondante
@@ -190,6 +216,12 @@ function updateBackground() {
                     }, index * 300 + 2500);
                 });
             }, 0);
+        }
+        
+        // Effet feuilles qui tombent pour Wood Card
+        if (bgClass === 'bg-la-poste') {
+            const leaves = createFallingLeaves();
+            leaves.style.display = 'block';
         }
         
         // Effets spéciaux pour Metal Cards

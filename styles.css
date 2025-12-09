@@ -339,7 +339,134 @@ body.bg-boursorama {
 }
 
 body.bg-la-poste {
-    background: linear-gradient(135deg, #F5E6D3 0%, #E8D4B8 30%, #D4B896 60%, #C4A67A 100%);
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 4px,
+            rgba(139, 90, 43, 0.08) 4px,
+            rgba(139, 90, 43, 0.08) 8px
+        ),
+        repeating-linear-gradient(
+            87deg,
+            transparent 0px,
+            transparent 20px,
+            rgba(101, 67, 33, 0.06) 20px,
+            rgba(101, 67, 33, 0.06) 24px
+        ),
+        repeating-linear-gradient(
+            93deg,
+            transparent 0px,
+            transparent 50px,
+            rgba(80, 50, 20, 0.05) 50px,
+            rgba(80, 50, 20, 0.05) 52px
+        ),
+        linear-gradient(135deg, #D4A574 0%, #C4956A 25%, #B8895E 50%, #A67B52 75%, #8B6B45 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Nœuds du bois */
+body.bg-la-poste::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse 80px 15px at 15% 20%, rgba(101, 67, 33, 0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 60px 12px at 75% 35%, rgba(101, 67, 33, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 100px 18px at 40% 70%, rgba(101, 67, 33, 0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 70px 14px at 85% 80%, rgba(101, 67, 33, 0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 50px 10px at 25% 50%, rgba(101, 67, 33, 0.11) 0%, transparent 70%),
+        radial-gradient(ellipse 90px 16px at 60% 15%, rgba(101, 67, 33, 0.09) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Conteneur des feuilles qui tombent */
+.falling-leaves {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.leaf {
+    position: absolute;
+    top: -50px;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #CD853F 100%);
+    clip-path: polygon(50% 0%, 80% 30%, 100% 50%, 80% 100%, 50% 80%, 20% 100%, 0% 50%, 20% 30%);
+    animation: fall-leaf linear infinite;
+    opacity: 0.8;
+}
+
+.leaf:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; width: 25px; height: 25px; }
+.leaf:nth-child(2) { left: 15%; animation-duration: 15s; animation-delay: 2s; width: 35px; height: 35px; }
+.leaf:nth-child(3) { left: 25%; animation-duration: 11s; animation-delay: 4s; width: 28px; height: 28px; }
+.leaf:nth-child(4) { left: 35%; animation-duration: 14s; animation-delay: 1s; width: 32px; height: 32px; }
+.leaf:nth-child(5) { left: 45%; animation-duration: 13s; animation-delay: 3s; width: 26px; height: 26px; }
+.leaf:nth-child(6) { left: 55%; animation-duration: 16s; animation-delay: 5s; width: 30px; height: 30px; }
+.leaf:nth-child(7) { left: 65%; animation-duration: 10s; animation-delay: 2.5s; width: 34px; height: 34px; }
+.leaf:nth-child(8) { left: 75%; animation-duration: 14s; animation-delay: 0.5s; width: 27px; height: 27px; }
+.leaf:nth-child(9) { left: 85%; animation-duration: 12s; animation-delay: 3.5s; width: 31px; height: 31px; }
+.leaf:nth-child(10) { left: 95%; animation-duration: 15s; animation-delay: 1.5s; width: 29px; height: 29px; }
+.leaf:nth-child(11) { left: 10%; animation-duration: 13s; animation-delay: 6s; width: 24px; height: 24px; }
+.leaf:nth-child(12) { left: 30%; animation-duration: 11s; animation-delay: 7s; width: 33px; height: 33px; }
+.leaf:nth-child(13) { left: 50%; animation-duration: 14s; animation-delay: 4.5s; width: 28px; height: 28px; }
+.leaf:nth-child(14) { left: 70%; animation-duration: 12s; animation-delay: 5.5s; width: 36px; height: 36px; }
+.leaf:nth-child(15) { left: 90%; animation-duration: 16s; animation-delay: 2.2s; width: 25px; height: 25px; }
+
+/* Différentes couleurs de feuilles */
+.leaf:nth-child(odd) {
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
+}
+
+.leaf:nth-child(3n) {
+    background: linear-gradient(135deg, #D2691E 0%, #F4A460 50%, #DEB887 100%);
+}
+
+.leaf:nth-child(4n) {
+    background: linear-gradient(135deg, #B8860B 0%, #DAA520 50%, #F0E68C 100%);
+}
+
+.leaf:nth-child(5n) {
+    background: linear-gradient(135deg, #6B4423 0%, #8B5A2B 50%, #A67B52 100%);
+}
+
+@keyframes fall-leaf {
+    0% {
+        top: -50px;
+        transform: rotate(0deg) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    25% {
+        transform: rotate(90deg) translateX(30px);
+    }
+    50% {
+        transform: rotate(180deg) translateX(-20px);
+    }
+    75% {
+        transform: rotate(270deg) translateX(25px);
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        top: 110vh;
+        transform: rotate(360deg) translateX(-15px);
+        opacity: 0;
+    }
 }
 
 /* Overlay pour les empreintes digitales (Biometric Card) */

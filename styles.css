@@ -935,58 +935,118 @@ h1 {
     color: #F59E0B;
 }
 
-/* ========== METAL CARD (Black) - Rose/Rouge métallique ========== */
+/* ========== EASY METAL CARD - Rouge métallique ========== */
 .bank-card.card-metal-black {
-    background: linear-gradient(135deg, #BE185D 0%, #9D174D 30%, #831843 60%, #500724 100%);
-    box-shadow: 0 15px 35px rgba(190, 24, 93, 0.4),
-                inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(160deg, #C62828 0%, #B71C1C 25%, #8B0000 50%, #6B0000 75%, #4A0000 100%);
+    box-shadow: 0 15px 35px rgba(139, 0, 0, 0.5),
+                inset 0 1px 2px rgba(255, 255, 255, 0.15),
+                inset 0 -1px 2px rgba(0, 0, 0, 0.2);
     padding: 0;
+    overflow: hidden;
 }
 
-.metal-card-design {
+.bank-card.card-metal-black::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 40%,
+        transparent 60%,
+        rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.easy-metal-card-design {
     position: relative;
     width: 100%;
     height: 100%;
     padding: 20px;
 }
 
-.metal-logo {
+/* Texte vertical EASY METAL CARD */
+.easy-metal-vertical-text {
     position: absolute;
-    left: 25px;
-    top: 30px;
-    font-size: 48px;
-    font-weight: 300;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: center center;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
     color: rgba(255, 255, 255, 0.9);
-    font-family: 'Georgia', serif;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.metal-chip {
+/* Logo THALES */
+.easy-metal-thales {
     position: absolute;
-    left: 25px;
-    bottom: 100px;
+    top: 20px;
+    right: 25px;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Puce de la carte */
+.easy-metal-chip {
+    position: absolute;
+    left: 45px;
+    top: 90px;
     width: 45px;
     height: 35px;
-    background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+    background: linear-gradient(145deg, #E8E0D5 0%, #C9BFA8 50%, #B8A888 100%);
     border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
-.metal-gradient-overlay {
+.easy-metal-chip::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+}
+
+/* Motif de points en arc SVG */
+.easy-metal-dots-pattern {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, 
-        transparent 0%, 
-        rgba(255, 255, 255, 0.1) 50%, 
-        transparent 100%);
+    width: 100%;
+    height: 100%;
     pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Icône contactless */
+.easy-metal-contactless {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    width: 35px;
+    height: 35px;
+}
+
+.easy-metal-contactless svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(90deg);
 }
 
 .card-metal-black .card-type-label {
-    color: rgba(255, 255, 255, 0.9);
+    display: none;
 }
 
 .bank-card:hover {

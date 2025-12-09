@@ -394,28 +394,204 @@ h1 {
                 inset 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-/* Metal Cards - Platinum */
+/* ========== VOICE CARD (Platinum) - Blanc avec ondes bleues ========== */
 .bank-card.card-metal-platinum {
-    background: linear-gradient(135deg, #E5E7EB 0%, #C0A080 50%, #9CA3AF 100%);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25),
-                inset -2px -2px 5px rgba(255, 255, 255, 0.3),
-                inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15),
+                inset 0 2px 4px rgba(255, 255, 255, 0.8);
+    padding: 0;
 }
 
-/* Metal Cards - Gold */
+.voice-card-design {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.voice-waves {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.voice-waves .wave {
+    height: 4px;
+    background: linear-gradient(90deg, #0EA5E9 0%, #06B6D4 100%);
+    border-radius: 4px;
+    animation: waveMove 1.5s ease-in-out infinite;
+}
+
+.voice-waves .wave:nth-child(1) { width: 60px; animation-delay: 0s; }
+.voice-waves .wave:nth-child(2) { width: 100px; animation-delay: 0.1s; }
+.voice-waves .wave:nth-child(3) { width: 140px; animation-delay: 0.2s; }
+.voice-waves .wave:nth-child(4) { width: 100px; animation-delay: 0.3s; }
+.voice-waves .wave:nth-child(5) { width: 60px; animation-delay: 0.4s; }
+
+@keyframes waveMove {
+    0%, 100% { transform: scaleX(1); opacity: 0.7; }
+    50% { transform: scaleX(1.2); opacity: 1; }
+}
+
+.voice-chip {
+    position: absolute;
+    left: 25px;
+    top: 80px;
+    width: 45px;
+    height: 35px;
+    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+    border-radius: 6px;
+}
+
+.card-brand-logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #64748B;
+    letter-spacing: 2px;
+}
+
+.card-type-label {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ========== BIOMETRIC CARD (Gold) - Noir avec capteur doré ========== */
 .bank-card.card-metal-gold {
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #DAA520 100%);
-    box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3),
-                inset -2px -2px 5px rgba(255, 255, 255, 0.4),
-                inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    padding: 0;
 }
 
-/* Metal Cards - Black */
+.biometric-card-design {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.card-brand-logo.dark {
+    color: #9CA3AF;
+}
+
+.biometric-chip {
+    position: absolute;
+    left: 25px;
+    top: 100px;
+    width: 55px;
+    height: 55px;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+.fingerprint-sensor {
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    background: repeating-radial-gradient(
+        circle at center,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.2) 2px,
+        rgba(0, 0, 0, 0.2) 4px
+    );
+}
+
+.biometric-main-chip {
+    position: absolute;
+    right: 25px;
+    top: 80px;
+    width: 45px;
+    height: 35px;
+    background: linear-gradient(135deg, #374151 0%, #4B5563 100%);
+    border-radius: 6px;
+}
+
+.security-icon {
+    position: absolute;
+    right: 25px;
+    bottom: 80px;
+    font-size: 24px;
+}
+
+.card-metal-gold .card-type-label {
+    color: #F59E0B;
+}
+
+/* ========== METAL CARD (Black) - Rose/Rouge métallique ========== */
 .bank-card.card-metal-black {
-    background: linear-gradient(135deg, #1F2937 0%, #111827 50%, #030712 100%);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
-                inset -2px -2px 5px rgba(255, 255, 255, 0.1),
-                inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, #BE185D 0%, #9D174D 30%, #831843 60%, #500724 100%);
+    box-shadow: 0 15px 35px rgba(190, 24, 93, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    padding: 0;
+}
+
+.metal-card-design {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.metal-logo {
+    position: absolute;
+    left: 25px;
+    top: 30px;
+    font-size: 48px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Georgia', serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.metal-chip {
+    position: absolute;
+    left: 25px;
+    bottom: 100px;
+    width: 45px;
+    height: 35px;
+    background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.metal-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.1) 50%, 
+        transparent 100%);
+    pointer-events: none;
+}
+
+.card-metal-black .card-type-label {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .bank-card:hover {

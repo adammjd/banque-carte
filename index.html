@@ -554,13 +554,80 @@
                             <div class="card-front">
                                 <div class="card-content biometric-card-design">
                                     <div class="card-brand-logo dark">THALES</div>
-                                    <div class="biometric-chip">
-                                        <div class="fingerprint-sensor"></div>
+                                    
+                                    <!-- Grande empreinte digitale avec scanner -->
+                                    <div class="fingerprint-scanner-container">
+                                        <!-- Empreinte principale -->
+                                        <svg class="main-fingerprint" viewBox="0 0 200 260" preserveAspectRatio="xMidYMid meet">
+                                            <defs>
+                                                <linearGradient id="fingerprintGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                    <stop offset="0%" style="stop-color:#67E8F9;stop-opacity:1" />
+                                                    <stop offset="50%" style="stop-color:#06B6D4;stop-opacity:1" />
+                                                    <stop offset="100%" style="stop-color:#0E7490;stop-opacity:0.8" />
+                                                </linearGradient>
+                                            </defs>
+                                            <g fill="none" stroke="url(#fingerprintGradient)" stroke-width="2" stroke-linecap="round">
+                                                <!-- Lignes extérieures de l'empreinte -->
+                                                <path d="M100,20 C140,20 170,50 170,90 C170,130 160,160 150,180 C140,200 120,220 100,230"/>
+                                                <path d="M100,20 C60,20 30,50 30,90 C30,130 40,160 50,180 C60,200 80,220 100,230"/>
+                                                
+                                                <!-- Deuxième rangée -->
+                                                <path d="M100,30 C135,30 160,55 160,90 C160,125 152,155 143,173 C134,191 118,210 100,218"/>
+                                                <path d="M100,30 C65,30 40,55 40,90 C40,125 48,155 57,173 C66,191 82,210 100,218"/>
+                                                
+                                                <!-- Troisième rangée -->
+                                                <path d="M100,40 C130,40 150,62 150,92 C150,122 143,148 135,165 C127,182 115,198 100,206"/>
+                                                <path d="M100,40 C70,40 50,62 50,92 C50,122 57,148 65,165 C73,182 85,198 100,206"/>
+                                                
+                                                <!-- Quatrième rangée -->
+                                                <path d="M100,50 C125,50 142,68 142,95 C142,122 136,143 128,158 C120,173 112,188 100,194"/>
+                                                <path d="M100,50 C75,50 58,68 58,95 C58,122 64,143 72,158 C80,173 88,188 100,194"/>
+                                                
+                                                <!-- Cinquième rangée -->
+                                                <path d="M100,60 C120,60 134,75 134,98 C134,121 129,138 122,151 C115,164 108,177 100,182"/>
+                                                <path d="M100,60 C80,60 66,75 66,98 C66,121 71,138 78,151 C85,164 92,177 100,182"/>
+                                                
+                                                <!-- Sixième rangée -->
+                                                <path d="M100,70 C115,70 126,82 126,102 C126,122 122,135 116,146 C110,157 105,167 100,170"/>
+                                                <path d="M100,70 C85,70 74,82 74,102 C74,122 78,135 84,146 C90,157 95,167 100,170"/>
+                                                
+                                                <!-- Septième rangée -->
+                                                <path d="M100,80 C112,80 120,90 120,106 C120,122 116,132 111,140 C106,148 103,155 100,158"/>
+                                                <path d="M100,80 C88,80 80,90 80,106 C80,122 84,132 89,140 C94,148 97,155 100,158"/>
+                                                
+                                                <!-- Centre de l'empreinte -->
+                                                <path d="M100,90 C108,90 114,98 114,110 C114,122 110,130 105,136"/>
+                                                <path d="M100,90 C92,90 86,98 86,110 C86,122 90,130 95,136"/>
+                                                
+                                                <!-- Boucle centrale -->
+                                                <ellipse cx="100" cy="115" rx="8" ry="12"/>
+                                            </g>
+                                        </svg>
+                                        
+                                        <!-- Ligne de scan cyan -->
+                                        <div class="scan-line"></div>
+                                        
+                                        <!-- Reflet de l'empreinte -->
+                                        <svg class="fingerprint-reflection" viewBox="0 0 200 260" preserveAspectRatio="xMidYMid meet">
+                                            <defs>
+                                                <linearGradient id="reflectionGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                    <stop offset="0%" style="stop-color:#0E7490;stop-opacity:0.4" />
+                                                    <stop offset="100%" style="stop-color:#0E7490;stop-opacity:0" />
+                                                </linearGradient>
+                                            </defs>
+                                            <g fill="none" stroke="url(#reflectionGradient)" stroke-width="2" stroke-linecap="round" transform="scale(1,-1) translate(0,-260)">
+                                                <path d="M100,20 C140,20 170,50 170,90 C170,130 160,160 150,180 C140,200 120,220 100,230"/>
+                                                <path d="M100,20 C60,20 30,50 30,90 C30,130 40,160 50,180 C60,200 80,220 100,230"/>
+                                                <path d="M100,30 C135,30 160,55 160,90 C160,125 152,155 143,173 C134,191 118,210 100,218"/>
+                                                <path d="M100,30 C65,30 40,55 40,90 C40,125 48,155 57,173 C66,191 82,210 100,218"/>
+                                                <path d="M100,40 C130,40 150,62 150,92 C150,122 143,148 135,165 C127,182 115,198 100,206"/>
+                                                <path d="M100,40 C70,40 50,62 50,92 C50,122 57,148 65,165 C73,182 85,198 100,206"/>
+                                            </g>
+                                        </svg>
                                     </div>
+                                    
                                     <div class="card-chip biometric-main-chip"></div>
-                                    <div class="security-icon">🔐</div>
                                 </div>
-                                <div class="card-type-label">Biometric</div>
                             </div>
                             <div class="card-back">
                                 <div class="back-content">

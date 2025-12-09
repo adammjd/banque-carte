@@ -59,7 +59,7 @@ let carouselRotation = 0;
 
 // Mapping des cartes vers les classes de fond
 const backgroundClasses = {
-    standard: ['bg-credit-agricol', 'bg-revolut', 'bg-societe-generale', 'bg-boursorama', 'bg-la-poste'],
+    standard: ['bg-credit-agricol', 'bg-revolut', 'bg-ocean', 'bg-boursorama', 'bg-la-poste'],
     metal: ['bg-platinum', 'bg-gold', 'bg-black']
 };
 
@@ -68,7 +68,7 @@ function updateBackground() {
     // Retirer toutes les classes de fond
     document.body.classList.remove(
         'bg-platinum', 'bg-gold', 'bg-black',
-        'bg-credit-agricol', 'bg-revolut', 'bg-societe-generale', 'bg-boursorama', 'bg-la-poste'
+        'bg-credit-agricol', 'bg-revolut', 'bg-ocean', 'bg-boursorama', 'bg-la-poste'
     );
     
     // Cacher les overlays

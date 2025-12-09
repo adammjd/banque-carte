@@ -749,7 +749,6 @@ h1 {
 }
 
 .bank-card.card-la-poste {
-    background: linear-gradient(135deg, #D4A574 0%, #C4956A 25%, #B8895E 50%, #A67B52 75%, #8B6B45 100%);
     box-shadow: 0 15px 35px rgba(139, 107, 69, 0.4),
                 inset 0 1px 2px rgba(255, 255, 255, 0.2);
     position: relative;
@@ -757,10 +756,11 @@ h1 {
 
 .bank-card.card-la-poste .card-front {
     overflow: hidden;
+    background: linear-gradient(135deg, #D4A574 0%, #C4956A 25%, #B8895E 50%, #A67B52 75%, #8B6B45 100%);
 }
 
 /* Texture de bois pour Wood Card */
-.bank-card.card-la-poste::before {
+.bank-card.card-la-poste .card-front::before {
     content: '';
     position: absolute;
     top: 0;
@@ -784,6 +784,7 @@ h1 {
         );
     pointer-events: none;
     z-index: 1;
+    border-radius: 25px;
 }
 
 .wood-card-design {

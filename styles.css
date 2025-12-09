@@ -32,6 +32,47 @@ h1 {
     letter-spacing: -0.5px;
 }
 
+/* Navigation des catégories */
+.category-nav {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+    justify-content: center;
+}
+
+.category-btn {
+    padding: 12px 24px;
+    border: 2px solid #e5e5e7;
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: #1a1a1a;
+}
+
+.category-btn:hover {
+    border-color: #3B82F6;
+    color: #3B82F6;
+}
+
+.category-btn.active {
+    background: #3B82F6;
+    border-color: #3B82F6;
+    color: white;
+}
+
+/* Sections des catégories */
+.category-section {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.category-section.active {
+    display: block;
+}
+
 /* Carousel vertical */
 .carousel-container {
     width: 100%;
@@ -137,6 +178,30 @@ h1 {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
                 inset -2px -2px 5px rgba(255, 255, 255, 0.2),
                 inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Metal Cards - Platinum */
+.bank-card.card-metal-platinum {
+    background: linear-gradient(135deg, #E5E7EB 0%, #C0A080 50%, #9CA3AF 100%);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25),
+                inset -2px -2px 5px rgba(255, 255, 255, 0.3),
+                inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Metal Cards - Gold */
+.bank-card.card-metal-gold {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #DAA520 100%);
+    box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3),
+                inset -2px -2px 5px rgba(255, 255, 255, 0.4),
+                inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Metal Cards - Black */
+.bank-card.card-metal-black {
+    background: linear-gradient(135deg, #1F2937 0%, #111827 50%, #030712 100%);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+                inset -2px -2px 5px rgba(255, 255, 255, 0.1),
+                inset 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .bank-card:hover {
@@ -460,6 +525,15 @@ h1 {
     }
     to {
         transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
         opacity: 1;
     }
 }

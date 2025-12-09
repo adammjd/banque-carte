@@ -1,42 +1,57 @@
 // Configuration du carrousel
-const carouselTrack = document.querySelector('.carousel-track');
-const bankCards = document.querySelectorAll('.bank-card');
-const cardsData = [
-    {
-        title: 'Crédit Agricol',
-        logo: '🌾',
-        bankInfo: 'Crédit Agricol est l\'un des plus grands groupes bancaires français, fondé en 1894. Il propose des services bancaires complets pour les particuliers et les entreprises, avec une forte présence territoriale en France.'
-    },
-    {
-        title: 'Revolut',
-        logo: '⚡',
-        bankInfo: 'Revolut est une fintech basée à Londres proposant des services bancaires numériques révolutionnaires. Leader en matière de paiements internationaux et de transfert d\'argent à faible coût.'
-    },
-    {
-        title: 'Société Générale',
-        logo: '🏛️',
-        bankInfo: 'Société Générale, fondée en 1864, est l\'une des plus grandes banques de France. Elle offre une gamme complète de produits et services bancaires et financiers.'
-    },
-    {
-        title: 'Boursorama',
-        logo: '💼',
-        bankInfo: 'Boursorama est une banque en ligne française filiale de Société Générale. Elle propose des services bancaires sans frais et des outils d\'investissement accessibles.'
-    },
-    {
-        title: 'La Poste',
-        logo: '📮',
-        bankInfo: 'La Banque Postale, filiale du groupe La Poste depuis 2006, propose des services bancaires accessibles dans les bureaux de poste français avec un service de proximité.'
-    },
-    {
-        title: 'Metal Card',
-        logo: '💎',
-        bankInfo: 'Metal Card est la carte premium exclusive offrant des avantages luxe et une expérience VIP. Avec ses bénéfices exclusifs et son design métallique prestigieux, c\'est le prestige bancaire à portée de main.'
-    }
-];
-
+let carouselTrack = document.querySelector('#standard-track');
+let bankCards = document.querySelectorAll('#standard-track .bank-card');
+let currentCategory = 'standard';
 let currentIndex = 0;
 let isScrolling = false;
 let isExpanded = false;
+
+const cardsData = {
+    standard: [
+        {
+            title: 'Crédit Agricol',
+            logo: '🌾',
+            bankInfo: 'Crédit Agricol est l\'un des plus grands groupes bancaires français, fondé en 1894. Il propose des services bancaires complets pour les particuliers et les entreprises, avec une forte présence territoriale en France.'
+        },
+        {
+            title: 'Revolut',
+            logo: '⚡',
+            bankInfo: 'Revolut est une fintech basée à Londres proposant des services bancaires numériques révolutionnaires. Leader en matière de paiements internationaux et de transfert d\'argent à faible coût.'
+        },
+        {
+            title: 'Société Générale',
+            logo: '🏛️',
+            bankInfo: 'Société Générale, fondée en 1864, est l\'une des plus grandes banques de France. Elle offre une gamme complète de produits et services bancaires et financiers.'
+        },
+        {
+            title: 'Boursorama',
+            logo: '💼',
+            bankInfo: 'Boursorama est une banque en ligne française filiale de Société Générale. Elle propose des services bancaires sans frais et des outils d\'investissement accessibles.'
+        },
+        {
+            title: 'La Poste',
+            logo: '📮',
+            bankInfo: 'La Banque Postale, filiale du groupe La Poste depuis 2006, propose des services bancaires accessibles dans les bureaux de poste français avec un service de proximité.'
+        }
+    ],
+    metal: [
+        {
+            title: 'Platinum Card',
+            logo: '💎',
+            bankInfo: 'Platinum Card est la carte premium exclusive offrant des avantages luxe et une expérience VIP. Avec ses bénéfices exclusifs et son design métallique prestigieux, c\'est le prestige bancaire à portée de main.'
+        },
+        {
+            title: 'Gold Card',
+            logo: '👑',
+            bankInfo: 'Gold Card offre une expérience premium avec des avantages exclusifs, des réductions VIP et un support client prioritaire. Incarnez le luxe et la distinction.'
+        },
+        {
+            title: 'Black Card',
+            logo: '⚫',
+            bankInfo: 'Black Card est l\'ultime expression du prestige. Réservée aux clients élites, elle offre les avantages les plus exclusifs, un accès VIP illimité et des services concierge 24/7.'
+        }
+    ]
+};
 
 // Fonction pour mettre à jour les classes des cartes
 function updateCarousel() {
@@ -121,13 +136,15 @@ function closeExpanded() {
 }
 
 // Event listeners sur les cartes
-bankCards.forEach((card, index) => {
-    card.addEventListener('click', (e) => {
-        if (!isExpanded) {
-            expandCard(index);
-        }
+function attachCardListeners() {
+    bankCards.forEach((card, index) => {
+        card.addEventListener('click', (e) => {
+            if (!isExpanded) {
+                expandCard(index);
+            }
+        });
     });
-});
+}
 
 // Fermer en cliquant sur l'overlay
 overlay.addEventListener('click', closeExpanded);
@@ -139,5 +156,34 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowDown') nextCard();
 });
 
+// Gestion de la navigation des catégories
+const categoryBtns = document.querySelectorAll('.category-btn');
+const categorySections = document.querySelectorAll('.category-section');
+
+categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const category = btn.dataset.category;
+        
+        // Mise à jour des boutons
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Mise à jour des sections
+        categorySections.forEach(section => section.classList.remove('active'));
+        document.getElementById(category).classList.add('active');
+        
+        // Mise à jour du carrousel
+        currentCategory = category;
+        currentIndex = 0;
+        carouselTrack = document.querySelector(`#${category}-track`);
+        bankCards = document.querySelectorAll(`#${category}-track .bank-card`);
+        
+        // Réattacher les listeners
+        attachCardListeners();
+        updateCarousel();
+    });
+});
+
 // Initialiser
+attachCardListeners();
 updateCarousel();
